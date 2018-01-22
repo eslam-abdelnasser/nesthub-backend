@@ -31,6 +31,16 @@ class BuildingController extends Controller
     {
 //        dd($request->except('_token'));
 
+        $this->validate($request ,array(
+            'name'=>'required|max:200',
+            'full_address'=>'required',
+            'welcome_message'=>'required',
+            'about_us'=>'required',
+            'postcode'=>'required',
+            'facilities'=>'required'
+        ));
+
+
         $building = new Building();
         $building->name = $request->name ;
         $building->full_address =  $request->full_address ;
@@ -39,6 +49,10 @@ class BuildingController extends Controller
         $building->postcode = $request->postcode ;
         $building->facilities = json_encode($request->facilities);
         $building->save();
+
+//        Session::flash('success',' Your Building now Created');
+
+
         return  redirect()->route('create.offices',['id'=>$building->id]);
 //        dd($request->all());
     }
@@ -53,6 +67,18 @@ class BuildingController extends Controller
 
     public function postOffice(Request $request , $id)
     {
+
+        $this->validate($request ,array(
+            'desks_available'=>'required',
+            'square_footage'=>'required',
+            'price'=>'required',
+            'max'=>'required',
+            'min'=>'required',
+            'key_features'=>'required',
+            'not_included'=>'required',
+            'office_type'=>'required'
+        ));
+
            $office = new Office();
 
            $office->building_id = $id ;
@@ -73,6 +99,7 @@ class BuildingController extends Controller
 
            $office->save();
 
+//        Session::flash('success',' Your Office now Created');
 
            return redirect()->back();
 
@@ -86,6 +113,10 @@ class BuildingController extends Controller
     public function postImages(Request $request,$id)
     {
 //        dd($request->file('images'));
+        $this->validate($request,[
+            'images' => 'mimes:jpg,jpeg,png,dmp'
+        ]);
+
         $images = (array) $request->file('images') ;
         foreach ($images as $image){
             $image_name = time().$image->getClientOriginalName().'.'.$image->getClientOriginalExtension() ;
@@ -95,6 +126,7 @@ class BuildingController extends Controller
             $building_image->building_id = $id ;
             $building_image->save();
         }
+//        Session::flash('success',' Images Added Successfully');
 
 
         return redirect()->route('create.additional',['id'=>$id]);
@@ -110,6 +142,12 @@ class BuildingController extends Controller
     public function postAdditional(Request $request,$id)
     {
 //        dd($request);
+
+//        $this->validate($request ,array(
+//            'highlight'=>'required',
+//            'description'=>'required'
+//        ));
+
         $addtional = new Additional() ;
         $addtional->additional = json_encode([
             'highlight' =>$request->highlight,
@@ -119,8 +157,10 @@ class BuildingController extends Controller
         $addtional->building_id = $id;
         $addtional->save();
 
+//        Session::flash('success',' Now Your Building is Live');
 
-        return redirect()->route();
+        dd("success");
+//        return redirect()->route();
 
     }
 }

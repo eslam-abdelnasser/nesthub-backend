@@ -54,7 +54,7 @@
                     {{--<form novalidate>--}}
                         <div class="tab-content">
 
-                            <form action="{{route('post.building')}}" method="post" id="form_building">
+                            <form action="{{route('post.building')}}" data-parsley-validate="" method="post" id="form_building">
                                 {!! csrf_field() !!}
                                 <div class="tab-pane active" id="step1">
                                     <div class="container">
@@ -62,7 +62,7 @@
                                             <div class=" name col-md-12 col-sm-12">
                                                 <small><b>BUILDING NAME*</b></small>
                                                 <p>Tenants will be able to search for you by this name.</p>
-                                                <input type="text" id="name" name="name" placeholder="Enter  Building name........" required>
+                                                <input type="text" id="name" name="name" placeholder="Enter  Building name........" required="true">
                                             </div>
                                         </div>
                                     </div>
@@ -71,11 +71,11 @@
                                             <div class=" address col-md-8 col-sm-8">
                                                 <small><b>FULL ADDRESS*</b></small>
                                                 <p>Number and Street Address</p>
-                                                <input type="text" id="address" name="full_address" placeholder="Enter  Building Address.......">
+                                                <input type="text" id="address" name="full_address" placeholder="Enter  Building Address......." required="true">
                                             </div>
                                             <div class=" postal col-md-4 col-sm-4">
                                                 <small><b>Postcode</b></small>
-                                                <input type="text" id="postal" name="postcode" size="8" placeholder="EX. AA9-AAAA" >
+                                                <input type="text" id="postal" name="postcode" size="8" placeholder="EX. AA9-AAAA" required="true">
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                             <div class="welcom-message col-md-8 col-sm-8">
                                                 <small><b>WELCOME MESSAGE*</b></small>
                                                 <p>Give prospective tenants an introduction to your space.</p>
-                                                <textarea id="text1" name="welcome_message"></textarea>
+                                                <textarea id="text1" name="welcome_message" required="true"></textarea>
                                             </div>
                                             <div class="tips col-md-4 col-sm-4">
                                                 <b>Some Tips</b>
@@ -100,7 +100,7 @@
                                             <div class="about-us col-md-8 col-sm-8">
                                                 <small><b>ABOUT US</b></small>
                                                 <p>Tell us more about you as a company.</p>
-                                                <textarea name="about_us"></textarea>
+                                                <textarea name="about_us" required="true"></textarea>
                                             </div>
                                             <div class=" tips col-md-4 col-sm-4">
 
@@ -555,9 +555,5 @@
 
 
 
-
-
-
-
-
 @endsection
+

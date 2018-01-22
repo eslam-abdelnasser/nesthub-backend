@@ -450,7 +450,7 @@
                         <div class="tab-pane active" id="step4">
                         <!-- start feature building-->
                         <div class="feature-building">
-                            <form method="post" action="{{route('post.additional',['id'=>$id])}}" id="form-additional">
+                            <form data-parsley-validate="" method="post" action="{{route('post.additional',['id'=>$id])}}" id="form-additional">
                                 {!! csrf_field() !!}
                                 <div class="container">
                                     <div class="row">
@@ -466,47 +466,47 @@
                                     <div class="highlight col-md-12 col-md-12" >
                                     <small><b>HIGHLIGHT ONE*</b></small>
                                     <p>Title</p>
-                                    <input type="text" id="highlight1" name="highlight[]">
+                                    <input required="" type="text" id="highlight1" name="highlight[]">
                                     <p>Description</p>
-                                    <input type="text" id="desc1" name="description[]">
+                                    <input type="text" required="" id="desc1" name="description[]">
                                     <br>
                                     <br>
                                     <br>
                                     <small><b>HIGHLIGHT Two*</b></small>
                                     <p>Title</p>
-                                    <input type="text" id="highlight2_two" name="highlight[]">
+                                    <input required="" type="text" id="highlight2_two" name="highlight[]">
                                     <p>Description</p>
-                                    <input type="text" id="desc2" name="description[]">
+                                    <input type="text" required="" id="desc2" name="description[]">
                                     <br>
                                     <br>
                                     <br>
                                     <small><b>HIGHLIGHT Three*</b></small>
                                     <p>Title</p>
-                                    <input type="text" id="highlight3" name="highlight[]">
+                                    <input required="" type="text" id="highlight3" name="highlight[]">
                                     <p>Description</p>
-                                    <input type="text" id="desc3" name="description[]">
+                                    <input type="text" required="" id="desc3" name="description[]">
                                     <br>
                                     <br>
                                     <br>
                                     <small><b>HIGHLIGHT Four*</b></small>
                                     <p>Title</p>
-                                    <input type="text" id="highlight4" name="highlight[]">
+                                    <input required="" type="text" id="highlight4" name="highlight[]">
                                     <p>Description</p>
-                                    <input type="text" id="desc4" name="description[]">
+                                    <input required="" type="text" id="desc4" name="description[]">
                                     <br>
                                     <br>
                                     <br>
                                     <small><b>HIGHLIGHT Five*</b></small>
                                     <p>Title</p>
-                                    <input type="text" id="highlight5" name="highlight[]">
+                                    <input type="text" required="" id="highlight5" name="highlight[]">
                                     <p>Description</p>
-                                    <input type="text" id="desc5" name="description[]">
+                                    <input type="text" required="" id="desc5" name="description[]">
                                     <br>
                                     <br>
                                     <br>
                                     <small><b>EXCLUSIVE OFFER</b></small>
                                     <p>A special offer with Hubble helps you get more prospective tenants (e.g. 10% off your first three months of rent and free welcome breakfast).</p>
-                                    <input type="text" id="ExcOffer" name="exlusive_office">
+                                    <input required="" type="text" id="ExcOffer" name="exlusive_office">
                                     </div>
                                     </div>
 

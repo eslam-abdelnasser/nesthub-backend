@@ -86,7 +86,7 @@
                         <small>No assigned seating  with many tenant in same office
                         </small></a></li>
                         </ul>
-                            <form  action="{{route('post.offices',['id'=>$id])}}"  method="post"/>
+                            <form data-parsley-validate="" action="{{route('post.offices',['id'=>$id])}}"  method="post"/>
                                    {!! csrf_field() !!}
                         <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
@@ -94,12 +94,12 @@
                         <div class="Av-desk  col-md-6 col-sm-6">
                         <small><b>DESKS AVAILABLE<span class="mand">*</span></b></small>
                         <p>How many desks would you like to rent out.</p>
-                        <input type="number" name="desks_available" value="10">
+                        <input type="number" name="desks_available" value="" required="">
                         </div>
                         <div class=" Av-desk col-md-6 col-sm-6" id="footage">
                         <small><b>SQUARE FOOTAGE<span class="mand">*</span></b></small>
                         <p>If exact size is unknown, please provide an estimate.</p>
-                        <input type="Number"  name="square_footage">
+                        <input type="Number"  name="square_footage" required="">
                         </div>
                         </div>
                             <input type="hidden" name="office_type"  value="private" id="office_type" />
@@ -107,24 +107,24 @@
                         <div class="PRICE col-md-12 col-sm-12">
                         <small><b>PRICE (EX. VAT)<span class="mand">*</span></b></small>
                         <p>Price per office per month. Do not include VAT.</p>
-                        <input type="number" id="price" name="price">
+                        <input type="number" id="price" name="price" required="">
                         </div>
                         </div>
                         <div class="row">
                         <div class="Av-desk  col-md-6 col-sm-6">
                         <small><b>MIN. TERM (MONTHS)</b></small>
-                        <input type="number" name="min">
+                        <input type="number" name="min" required="">
                         </div>
                         <div class=" Av-desk col-md-6 col-sm-6">
                         <small><b>MAX. TERM (MONTHS)</b></small>
-                        <input type="number" name="max">
+                        <input type="number" name="max" required="">
                         </div>
                         </div>
                         <div class="row">
                         <div class="welcom-message col-md-8 col-sm-8">
                         <small><b>KEY FEATURES</b></small>
                         <p>Please list this in bullet form by adding - followed by a space.</p>
-                        <textarea class="KEY-FEATURES" name="key_features"></textarea>
+                        <textarea class="KEY-FEATURES" name="key_features" required=""></textarea>
                         </div>
                         <div class="tips col-md-4 col-sm-4">
                         <b>Some Tips</b>
@@ -136,7 +136,7 @@
                         <div class="welcom-message col-md-8 col-sm-8">
                         <small><b>NOT INCLUDED</b></small>
                         <p>Please list this in bullet form by adding - followed by a space.</p>
-                        <textarea class="KEY-FEATURES" name="not_included"></textarea>
+                        <textarea class="KEY-FEATURES" name="not_included" required=""></textarea>
                         </div>
                         <div class="tips col-md-4 col-sm-4">
                         <b>Some Tips</b>
@@ -181,47 +181,47 @@
                         <div class="highlight col-md-12 col-md-12" >
                         <small><b>HIGHLIGHT ONE*</b></small>
                         <p>Title</p>
-                        <input type="text" id="highlight1" name="highlight_one">
+                        <input type="text" id="highlight1" name="highlight_one" required="">
                         <p>Description</p>
-                        <input type="text" id="desc1" name="description_one">
+                        <input type="text" id="desc1" name="description_one" required="">
                         <br>
                         <br>
                         <br>
                         <small><b>HIGHLIGHT Two*</b></small>
                         <p>Title</p>
-                        <input type="text" id="highlight2_two">
+                        <input type="text" id="highlight2_two" required="">
                         <p>Description</p>
-                        <input type="text" id="desc2" name="description_two">
+                        <input type="text" id="desc2" name="description_two" required="">
                         <br>
                         <br>
                         <br>
                         <small><b>HIGHLIGHT Three*</b></small>
                         <p>Title</p>
-                        <input type="text" id="highlight3" name="highlight_three">
+                        <input type="text" id="highlight3" name="highlight_three" required="">
                         <p>Description</p>
-                        <input type="text" id="desc3" name="description_three">
+                        <input type="text" id="desc3" name="description_three" required="">
                         <br>
                         <br>
                         <br>
                         <small><b>HIGHLIGHT Four*</b></small>
                         <p>Title</p>
-                        <input type="text" id="highlight4" name="highlight_four">
+                        <input type="text" id="highlight4" name="highlight_four" required="">
                         <p>Description</p>
-                        <input type="text" id="desc4" name="description_four">
+                        <input type="text" id="desc4" name="description_four" required="">
                         <br>
                         <br>
                         <br>
                         <small><b>HIGHLIGHT Five*</b></small>
                         <p>Title</p>
-                        <input type="text" id="highlight5" name="highlight_five">
+                        <input type="text" id="highlight5" name="highlight_five" required="">
                         <p>Description</p>
-                        <input type="text" id="desc5" name="description_five">
+                        <input type="text" required="" id="desc5" name="description_five">
                         <br>
                         <br>
                         <br>
                         <small><b>EXCLUSIVE OFFER</b></small>
                         <p>A special offer with Hubble helps you get more prospective tenants (e.g. 10% off your first three months of rent and free welcome breakfast).</p>
-                        <input type="text" id="ExcOffer" name="exlusive_office">
+                        <input required="" type="text" id="ExcOffer" name="exlusive_office">
                         </div>
                         </div>
 

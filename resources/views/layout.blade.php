@@ -4,7 +4,7 @@
 @include('partials.navigation')
 
 
-
+@include('partials.messages')
 
 
 @yield('content')

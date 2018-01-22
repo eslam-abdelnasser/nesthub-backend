@@ -101,5 +101,9 @@
         document.getElementById("overlay").style.display = "none";
     }
 </script>
+{!! Html::script('js/parsley.min.js') !!}
+
+@yield('js')
+
 </body>
 </html>
