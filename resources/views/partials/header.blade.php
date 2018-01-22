@@ -45,6 +45,10 @@
     <script src="{{asset('front/js/fileinput.js')}}" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuev6Dj8Xvo7fePYs2YJ8KA84xxBCIUo&libraries=places"></script>
     >
+    {!! Html::style('css/parsley.css') !!}
+
+    @yield('css')
+
 </head>
 
 <body>
