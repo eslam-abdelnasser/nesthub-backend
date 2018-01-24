@@ -15,6 +15,8 @@
 //    return view('index');
 //});
 
+use App\Notifications\NewBuilding;
+
 Auth::routes();
 
 Route::get('/','Frontend\BuildingController@index');
