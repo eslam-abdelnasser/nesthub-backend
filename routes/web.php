@@ -14,6 +14,10 @@
 //Route::get('/', function () {
 //    return view('index');
 //});
+
+
+use App\Notifications\NewBuilding;
+
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/','Frontend\BuildingController@index')->name('hola');

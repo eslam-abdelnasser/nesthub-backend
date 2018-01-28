@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Additional;
 use App\Models\Images;
 use App\Models\Office;
+use App\Notifications\NewBuilding;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Building ;
@@ -54,6 +55,8 @@ class BuildingController extends Controller
         $building->save();
 
 //        Session::flash('success',' Your Building now Created');
+
+
 
 
         return  redirect()->route('create.offices',['id'=>$building->id]);
@@ -150,6 +153,10 @@ class BuildingController extends Controller
 //            'highlight'=>'required',
 //            'description'=>'required'
 //        ));
+
+        $building = Building::find($id);
+        $user = \App\User::find(1);
+        $user->notify(new NewBuilding($user,$building));
 
         $addtional = new Additional() ;
         $addtional->additional = json_encode([
