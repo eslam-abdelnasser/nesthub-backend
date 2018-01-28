@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Register On Nesthub</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -34,6 +34,38 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('mobile_number') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Mobile number</label>
+
+                            <div class="col-md-6">
+                                <input id="mobile_number" type="text" class="form-control" name="mobile_number" value="{{ old('mobile_number') }}" required autofocus>
+
+                                @if ($errors->has('mobile_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mobile_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('user_type') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">User category</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" id="sel1" name="user_type">
+                                    <option selected>Select your category</option>
+                                    <option value="office-provider">Office provider</option>
+                                    <option value="start-up">Start up</option>
+                                    <option value="freelancer">Freelancer</option>
+                                </select>
+                                @if ($errors->has('user_type'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_type') }}</strong>
                                     </span>
                                 @endif
                             </div>

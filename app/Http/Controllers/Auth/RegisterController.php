@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use function Couchbase\defaultDecoder;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,6 +50,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
+            'mobile_number' => 'required|integer',
+            'user_type' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -62,9 +65,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        switch ($data['user_type']){
+            case 'freelancer':
+                $type = 0 ;
+                break ;
+            case 'start-up':
+                $type = 1 ;
+                break ;
+                default:
+                $type = 2 ;
+                break ;
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'type' => $type,
+            'mobile_number'=>$data['mobile_number'],
             'password' => bcrypt($data['password']),
         ]);
     }

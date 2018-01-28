@@ -8,21 +8,23 @@ use App\Models\Office;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Building ;
+use Illuminate\Support\Facades\Auth;
+
 class BuildingController extends Controller
 {
     //
 
-    public function showBuildings()
-    {
-        // TODO user validation
-//        $building =Building::all();
-//        return view('show_buildings');
-    }
-
     public function index()
     {
+        // TODO user validation
+        $buildings =Building::where('user_id','=',Auth::user()->id)->get();
+        return view('index')->withBuildings($buildings);
+    }
 
-        return view('index');
+    public function createBuildig()
+    {
+
+        return view('create-building');
     }
 
 
@@ -43,6 +45,7 @@ class BuildingController extends Controller
 
         $building = new Building();
         $building->name = $request->name ;
+        $building->user_id = Auth::user()->id;
         $building->full_address =  $request->full_address ;
         $building->welcome_message = $request->welcome_message ;
         $building->about_us  =  $request->about_us ;
@@ -113,9 +116,9 @@ class BuildingController extends Controller
     public function postImages(Request $request,$id)
     {
 //        dd($request->file('images'));
-        $this->validate($request,[
-            'images' => 'mimes:jpg,jpeg,png,dmp'
-        ]);
+//        $this->validate($request,[
+//            'images' => 'mimes:jpg,jpeg,png,dmp'
+//        ]);
 
         $images = (array) $request->file('images') ;
         foreach ($images as $image){
@@ -159,8 +162,8 @@ class BuildingController extends Controller
 
 //        Session::flash('success',' Now Your Building is Live');
 
-        dd("success");
-//        return redirect()->route();
+//        dd("success");
+        return redirect()->route('hola');
 
     }
 }

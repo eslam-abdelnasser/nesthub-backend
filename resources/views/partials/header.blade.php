@@ -44,8 +44,10 @@
     <script src="{{asset('front/js/plugins/sortable.js')}}" type="text/javascript"></script>
     <script src="{{asset('front/js/fileinput.js')}}" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwuev6Dj8Xvo7fePYs2YJ8KA84xxBCIUo&libraries=places"></script>
-    >
-    {!! Html::style('css/parsley.css') !!}
+    <link rel="Stylesheet" type="text/css" href="{{asset('css/parsley.css')}}" />
+    <script src="{{asset('js/parsley.min.js')}}" type="text/javascript"></script>
+{{--    {!! Html::script('js/parsley.min.js') !!}--}}
+    {{--{!! Html::style('css/parsley.css') !!}--}}
 
     @yield('css')
 

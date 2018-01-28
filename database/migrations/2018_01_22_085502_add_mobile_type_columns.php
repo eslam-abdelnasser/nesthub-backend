@@ -16,7 +16,7 @@ class AddMobileTypeColumns extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->string('mobile_number')->after('email');
-            $table->boolean('type')->default(0);
+            $table->tinyInteger('type')->after('email');
 
         });
     }

@@ -18,9 +18,9 @@
                 <div class="col-md-6 col-sm-12">
                     <h3><b>Add Building</b></h3>
                 </div>
-                <div class="col-md-6 col-sm-12">
-                    <button class="btn btn-danger Continue" id="Continue99">Save&Continue</button>
-                </div>
+                {{--<div class="col-md-6 col-sm-12">--}}
+                    {{--<button class="btn btn-danger Continue" id="Continue99">Save&Continue</button>--}}
+                {{--</div>--}}
             </div>
 
         </div>
