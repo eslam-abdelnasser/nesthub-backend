@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Additional;
 use App\Models\Images;
 use App\Models\Office;
+use App\Models\Facility;
 use App\Notifications\NewBuilding;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -24,8 +25,9 @@ class BuildingController extends Controller
 
     public function createBuildig()
     {
-
-        return view('create-building');
+        $facilities = Facility::all();
+//        dd($facilities);
+        return view('create-building')->withFacilities($facilities);
     }
 
 
@@ -51,9 +53,10 @@ class BuildingController extends Controller
         $building->welcome_message = $request->welcome_message ;
         $building->about_us  =  $request->about_us ;
         $building->postcode = $request->postcode ;
-        $building->facilities = json_encode($request->facilities);
+      //  $building->facilities = json_encode($request->facilities);
         $building->save();
 
+        $building->facilities()->sync($request->facilities);
 //        Session::flash('success',' Your Building now Created');
 
 

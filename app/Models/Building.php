@@ -16,5 +16,7 @@ class Building extends Model
     {
         return $this->belongsTo('App\User','user_id');
     }
-
+    public function facilities(){
+        return $this->belongsToMany('App\Models\Facility','building_facility','building_id','facilities_id')->withTimestamps();
+    }
 }

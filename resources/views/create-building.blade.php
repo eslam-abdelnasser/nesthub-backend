@@ -115,76 +115,18 @@
                                                 <p>Select all available facilities in your building.</p>
                                             </div>
                                         </div>
+
                                         <div class="checking">
                                             <div class="row">
-                                                <div class="col-md-3 col-sm-6">
-                                                    <input type="checkbox" name="facilities[]" value="furniture" class="cb" id="check1">
-                                                    <label> Furniture</label><hr></br>
-                                                    <input type="checkbox" nama="facilities[]" value="pets-allowed" class="cb" id="check2">
-                                                    <label>Pets Allowed </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="kitchen" class="cb" id="check3">
-                                                    <label>Kitchen</label><hr> </br>
-                                                    <input type="checkbox" name="facilities[]" value="cleaning" class="cb" id="check4">
-                                                    <label>Cleaning </label><hr> </br>
-                                                    <input type="checkbox" name="facilities[]" value="phone-booths" class="cb" id="check5">
-                                                    <label> Phone Booths</label><hr> </br>
-                                                    <input type="checkbox"  name="furniture[]" value="utilities" class="cb" id="check6">
-                                                    <label> Utilities </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="fruit&snacks" class="cb" id="check7">
-                                                    <label> Fruit & Snacks </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="24hr-access" class="cb" id="check8">
-                                                    <label> 24 hr Access </label><hr></br>
-                                                </div>
-                                                <div class="col-md-3 col-sm-6">
-                                                    <input type="checkbox" name="facilities[]" value="breakout-space" class="cb" id="check9">
-                                                    <label> Breakout Space</label><hr> </br>
-                                                    <input type="checkbox" name="facilities[]" value="lockers" class="cb" id="check10">
-                                                    <label> Lockers</label><hr> </br>
-                                                    <input type="checkbox" name="facilities[]"  value="bike-storage"  class="cb" id="check11">
-                                                    <label> Bike Storage </label><hr></br>
-                                                    <input type="checkbox"  name="facilities[]"  value="gym" class="cb" id="check12">
-                                                    <label> Gym </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="printing" class="cb" id="check13">
-                                                    <label> Printing </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="cafe" class="cb" id="check14">
-                                                    <label> Cafe </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]"  value="coffee-tea" class="cb" id="check15">
-                                                    <label> Coffee & Tea </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="roof-terrace" class="cb" id="check16">
-                                                    <label> Roof Terrace</label><hr> </br>
-                                                </div>
-                                                <div class="col-md-3 col-sm-6">
-                                                    <input type="checkbox" name="facilities[]" value="mailing-address" class="cb" id="check17">
-                                                    <label> Mailing Address</label><hr> </br>
-                                                    <input type="checkbox" name="facilities[]" value="showers" class="cb" id="check18">
-                                                    <label> Showers </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="event-space" class="cb" id="check19">
-                                                    <label> Event Space </label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="inventory-storage" class="cb" id="check20">
-                                                    <label> Inventory Storage</label><hr></br>
-                                                    <input type="checkbox" name="facilities[]"  value="reception" class="cb" id="check21">
-                                                    <label> Reception</label><hr> </br>
-                                                    <input type="checkbox" name="facilities[]" value="trading-address" class="cb" id="check22">
-                                                    <label>  Trading Address</label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="events-talks" class="cb" id="check23">
-                                                    <label>Events & Talks</label><hr></br>
-                                                </div>
-                                                <div class="col-md-3 col-sm-6">
-                                                    <input type="checkbox" name="facilities[]" value="disabled-access" class="cb" id="check24">
-                                                    <label>Disabled Access</label><hr> </br>
-                                                    <input type="checkbox" name="facilities[]" value="meeting-rooms" class="cb" id="check25">
-                                                    <label>Meeting Rooms </label> <hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="childcare" class="cb" id="check26">
-                                                    <label>Childcare</label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="parking" class="cb" id="check27">
-                                                    <label>Parking</label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="secure-access" class="cb" id="check28">
-                                                    <label>Secure Access</label><hr>  </br>
-                                                    <input type="checkbox" name="facilities[]" value="beer-wine" class="cb" id="check29">
-                                                    <label>Beer & Wine</label><hr></br>
-                                                    <input type="checkbox" name="facilities[]" value="wifi" class="cb" id="check30">
-                                                    <label> Wifi </label><hr></br>
-                                                </div>
+
+                                                       @foreach ($facilities as $facility)
+                                                         <div class="col-md-3 col-sm-6">
+                                                         <input type="checkbox" name="facilities[]" value="{{$facility->id}}" class="cb" id="check1">
+                                                         <label> {{$facility->name}}</label><hr></br>
+                                                         </div>
+                                                       @endforeach
+
+
                                             </div>
                                         </div>
                                     </div>
