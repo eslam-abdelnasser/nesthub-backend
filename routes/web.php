@@ -20,9 +20,11 @@ use App\Notifications\NewBuilding;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
+    ///photo/{photo}/edit
+    Route::resource('user-profile','UserController');
+    //Route::get('user-profile/{id}','UserController@edit')->name('user-profile');
     Route::get('/','Frontend\BuildingController@index')->name('hola');
     //route the controller
-    Route::resource('/facilities','Frontend\FacilityController');
 
     Route::get('/building','Frontend\BuildingController@createBuildig')->name('add-building');
     Route::post('/add-building','Frontend\BuildingController@postBuilding')->name('post.building');

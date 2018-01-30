@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','mobile_number','type'
+        'name', 'email', 'password','mobile_number','type','title','about_me'
     ];
 
     /**
@@ -30,5 +30,10 @@ class User extends Authenticatable
     public function routeNotificationForSlack(){
         //dynamic
         return 'https://hooks.slack.com/services/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';
+    }
+    //user has one image
+    public function image()
+    {
+        return $this->hasOne('App\Models\Images');
     }
 }

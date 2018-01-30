@@ -485,3 +485,29 @@ margin-top:-100px;
       margin-top: -40px;
 	}
 }
+@media (max-width:995px)
+{
+.navbar-header button.collapsed
+ {
+  display: none;
+  }
+}
+.edit
+{
+  float:right;
+}
+.show-build
+{
+  margin:2%;
+  background-color:#ffffff;
+  padding:20px;
+}
+.show-build b
+{
+  margin-right:1%;
+}
+.show-build span
+{
+  color:darkgray;
+  margin-right:1%;
+}
