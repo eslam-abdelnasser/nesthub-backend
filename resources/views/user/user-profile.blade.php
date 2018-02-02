@@ -1,7 +1,7 @@
 @extends('user_layout')
 
 @section('content')
-    <!-- /.navbar-collapse -->
+      <!-- /.navbar-collapse -->
     <!-- /.container -->
     </nav>
     </div>
@@ -33,16 +33,24 @@
 
                         <div class="header clearfix">
                             <h3>{{$users->name}}</h3>
-                            <p>{{$users->email}}</p>
-                            <div class="edit-profile-photo">
-                                <img src="img/avatar/avatar-3.jpg" alt="agent-1" class="img-responsive">
-                                <div class="change-photo-btn">
-                                    <div class="photoUpload">
-                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                        <input type="file" class="upload">
-                                    </div>
-                                </div>
-                            </div>
+                            <p>{{$users->email}}
+                              <div class="edit-profile-photo">
+                                 @if($users->img_url==null)
+                                      <img src="{{asset('images/user_image/avatar-5.png')}}" alt="agent-1" class="img-responsive">
+                                 @else
+                                    <img src="{{asset('images/user_image/$user->img_url')}}" alt="agent-1" class="img-responsive" id="upload_image">
+                                 @endif
+                                  <form action=""  method="post" enctype="multipart/form-data" id="form-upload">
+                                       {!! csrf_field() !!}
+                                     <div class="change-photo-btn">
+                                             <div class="photoUpload">
+                                                 <span><i class="fa fa-upload" data-color="red"></i> Upload Photo</span>
+                                                 <input type="file" class="upload" id="file" name="file">
+                                             </div>
+                                     </div>
+                                  </form>
+                              </div>
+
                         </div>
                         <div class="content">
                             <ul>
@@ -88,27 +96,28 @@
                             <h1><span>Advanced</span> Search</h1>
                         </div>
 
-                        <form action="{{route('user.update',[$users->id])}}" method="post">
+                        <form action="{{route('user-profile.update',['user_profile'=> $users->id])}}" method="post">
                             {{csrf_field()}}
+                            <input type="hidden" name="_method" value="put">
                             <div class="form-group">
                                 <label>Your Name</label>
-                                <input type="text" class="input-text" name="" value="{{$users->name}}">
+                                <input type="text" class="input-text" name="name" value="{{$users->name}}">
                             </div>
                             <div class="form-group">
                                 <label>Your Title</label>
-                                <input type="text" class="input-text" name="" value="{{$users->title}}">
+                                <input type="text" class="input-text" name="title" value="{{$users->title}}">
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="text" class="input-text" name="" value="{{$users->mobile_number}}">
+                                <input type="text" class="input-text" name="mobile_number" value="{{$users->mobile_number}}">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="input-text"  name="" value="{{$users->email}}" >
+                                <input type="email" class="input-text"  name="email" value="{{$users->email}}" >
                             </div>
                             <div class="form-group">
                                 <label>About Me</label>
-                                <textarea class="input-text" value="{{$users->about_me }}" ></textarea>
+                                <textarea class="input-text" name="about_me">{{$users->about_me }}</textarea>
                             </div>
                             <input type="submit" class="btn button-md button-theme" value="Save Changes">
 

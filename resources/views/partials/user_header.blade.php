@@ -42,6 +42,11 @@
     <script type="text/javascript" src="{{asset('front/js/html5shiv.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('front/js/respond.min.js')}}"></script>
     <![endif]-->
+
+    {{--to upload image using ajex--}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -122,3 +127,45 @@
 
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        $(document).on('change','#file',function () {
+            var property=document.getElementById("file").filles[0];
+            var image_name=property.name;
+            var image_extension=image_name.split(".").pop().toLowerCase();
+            if(jQuery.inArray(image_extension,['gif','png','jpg','jpeg']) == -1){
+              alert("Invalid Image File");
+            }
+            var image_size=property.size;
+            if(image_size > 2000000){
+                alert("image file Size is vary big");
+            }
+            else {
+                var form_data=new FormData();
+                form_data.append("file",property);
+                $.ajax({
+                    url:"./upload_image",
+                    method:"POST",
+                    data:form_data,
+                    contentType:false,
+                    cache:false,
+                    processData:false,
+                    beforeSend:function () {
+                        $('#upload_image').html("<label class='text-seccess'>Image " +
+                            "Uploading ..</label>");
+                    },
+                    success:function(data){
+                        $('#upload_image').html(data);
+                    }
+                })
+            }
+        })
+    })
+
+
+
+
+
+
+
+</script>
