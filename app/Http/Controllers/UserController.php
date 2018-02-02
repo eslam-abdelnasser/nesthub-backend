@@ -65,11 +65,7 @@ class UserController extends Controller
         //redirect
         return back()->withInput();
     }
-    public function create(){
 
-
-
-    }
     public function upload_image(Request $request){
 
         $images = $request->file('images') ;
@@ -81,15 +77,22 @@ class UserController extends Controller
 //        $image = User::where('id',Auth::user()->id)->updateOrCreate([
 //          'img_url'=> $request->file('images')
 //        ]) ;
-//        $image_name = time().$image->getClientOriginalName().'.'.$image->getClientOriginalExtension() ;
-//        $image->move(public_path('/images'),$image_name);
-//        $building_image = new Images() ;
-//        $building_image->image_url = $image_name ;
-//        $building_image->building_id = $id ;
-//        $building_image->save();
+
         return redirect()->route('user-profile.edit', ['user_profile' => Auth::user()->id]);
 
     }
 
+   public function change_password(Request $request){
+
+       $update = User::where('id', Auth::user()->id)
+           ->update([
+               'password' => $request->input('password'),
+           ]);
+       if ($update) {
+           return redirect()->route('user-profile.edit', ['user_profile' => Auth::user()->id])->with('success', 'Profile  Updated Successfully');
+       }
+       //redirect
+       return back()->withInput();
+   }
 
 }

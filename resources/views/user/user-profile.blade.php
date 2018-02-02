@@ -60,7 +60,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="my-properties.html">
+                                    <a href="my_property.blade.php">
                                         <i class="flaticon-apartment"></i>My Properties
                                     </a>
                                 </li>
