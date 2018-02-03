@@ -19,8 +19,10 @@
 use App\Notifications\NewBuilding;
 
 Auth::routes();
+Route::get('/','Frontend\HomeController@index');
+//Route::get('/build/{name}','Frontend');
 Route::middleware(['auth'])->group(function () {
-    Route::get('/','Frontend\BuildingController@index')->name('hola');
+//    Route::get('/','Frontend\BuildingController@index')->name('hola');
 
     Route::get('/building','Frontend\BuildingController@createBuildig')->name('add-building');
     Route::post('/add-building','Frontend\BuildingController@postBuilding')->name('post.building');
