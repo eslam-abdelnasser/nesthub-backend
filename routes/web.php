@@ -19,10 +19,24 @@
 use App\Notifications\NewBuilding;
 
 Auth::routes();
+Route::get('/','Frontend\HomeController@index');
+//Route::get('/build/{name}','Frontend');
 Route::middleware(['auth'])->group(function () {
-    Route::get('/','Frontend\BuildingController@index')->name('hola');
+//    Route::get('/','Frontend\BuildingController@index')->name('hola');
+    ///photo/{photo}/edit
+    Route::resource('user-profile','UserController');
+    //Route::post('/change_password','UserController@change_password');
+    //Route::get('user-profile/{id}','UserController@edit')->name('user-profile');
+    //to show the building list
+    Route::get('/my_property','Frontend\BuildingController@index')->name('my-property');
+
+//    Route::get('/','Frontend\BuildingController@index')->name('hola');
+
+
+    //route the controller
 
     Route::get('/building','Frontend\BuildingController@createBuildig')->name('add-building');
+
     Route::post('/add-building','Frontend\BuildingController@postBuilding')->name('post.building');
 
     Route::get('/building/{id}/add-offices','Frontend\BuildingController@office')->name('create.offices');

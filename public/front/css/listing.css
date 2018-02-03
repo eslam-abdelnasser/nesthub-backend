@@ -485,6 +485,7 @@ margin-top:-100px;
       margin-top: -40px;
 	}
 }
+<<<<<<< HEAD
 =======
 .mand
 {
@@ -973,6 +974,8 @@ margin-top:-100px;
       margin-top: -40px;
 	}
 }
+=======
+>>>>>>> 1e32c54d30c78d6d6d64ac88a606319d025dc6de
 @media (max-width:995px)
 {
 .navbar-header button.collapsed
@@ -980,7 +983,10 @@ margin-top:-100px;
   display: none;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1e32c54d30c78d6d6d64ac88a606319d025dc6de
 .edit
 {
   float:right;
@@ -999,4 +1005,8 @@ margin-top:-100px;
 {
   color:darkgray;
   margin-right:1%;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1e32c54d30c78d6d6d64ac88a606319d025dc6de
