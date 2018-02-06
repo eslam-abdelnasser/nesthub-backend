@@ -5,6 +5,7 @@
     <title>NestHUB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/animate.min.css')}}">
@@ -27,6 +28,8 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/ie10-viewport-bug-workaround.css')}}">
+    @stack('css')
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script type="text/javascript" src="{{asset('front/js/ie8-responsive-file-warning.js')}}"></script><![endif]-->
     <script type="text/javascript" src="{{asset('front/js/ie-emulation-modes-warning.js')}}"></script>

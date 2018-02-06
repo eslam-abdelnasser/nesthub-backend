@@ -357,5 +357,9 @@
     });
 </script>
 
-</div></body>
+
+
+@stack('scripts')
+
+</body>
 </html>

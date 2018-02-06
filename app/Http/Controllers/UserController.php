@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Image ;
 class UserController extends Controller
 {
     /**
@@ -30,14 +30,9 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function userProfile()
     {
-        //
-        $users = User::find(Auth::user()->id);
-
-        return view('user.user-profile', ['users' => $users]);
-
-
+        return view('user.user_profile');
     }
 
     /**
@@ -93,6 +88,20 @@ class UserController extends Controller
        }
        //redirect
        return back()->withInput();
+   }
+
+
+   public function image(Request $request)
+   {
+       if($request->hasFile('image')) {
+           $file = $request->file('image');
+           $filename = time().'NestHub'.'.'.$file->getClientOriginalExtension();
+           $image_resize = Image::make($file->getRealPath());
+           $image_resize->resize(160, 160);
+           $image_resize->save(public_path('uploads/user_image/' .$filename));
+
+           return $filename ;
+       }
    }
 
 }

@@ -15,8 +15,8 @@ class AddTitleColumnUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('title')->nullable();
-            $table->text('about_me')->nullable();
+            $table->string('title')->nullable()->after('remember_token');
+            $table->text('about_me')->nullable()->after('remember_token');
 
         });
     }

@@ -15,7 +15,7 @@ class AddImgUrlColumeToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('img_url')->nullable();
+            $table->string('img_url')->nullable()->after('remember_token');
         });
     }
 

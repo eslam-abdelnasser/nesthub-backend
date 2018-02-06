@@ -58,7 +58,7 @@
                         top: 8px;
                         position: relative;
                      ">&#9776;</button>
-                    <a href="index-3.html" class="logo"><img src="{{asset('front/img/footer-logo.png')}}" alt="logo"> </a>
+                    <a href="index-3.html" class="logo"><img src="{{asset('front/img/logos/logo.png')}}" alt="logo"> </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
