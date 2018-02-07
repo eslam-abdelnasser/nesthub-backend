@@ -196,6 +196,7 @@
 <script type="text/javascript" src="{{asset('front/js/leaflet-providers.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/leaflet.markercluster.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/dropzone.js')}}"></script>
+<script type="text/javascript" src="{{asset('front/js/fileinput.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/jquery.filterizr.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/maps.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/app.js')}}"></script>

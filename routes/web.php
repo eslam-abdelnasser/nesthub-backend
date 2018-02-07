@@ -20,16 +20,15 @@ use App\Notifications\NewBuilding;
 
 Auth::routes();
 Route::get('/','Frontend\HomeController@index');
-Route::get('profile','UserController@userProfile')->name('user_profile');
-Route::post('user_profile/image','UserController@image')->name('post.user_image');
-Route::put('user');
 //Route::get('/build/{name}','Frontend');
 Route::middleware(['auth'])->group(function () {
 //    Route::get('/','Frontend\BuildingController@index')->name('hola');
     ///photo/{photo}/edit
 //    Route::resource('user-profile','UserController');
 
-    Route::put('user_profile/{id}','UserController@update')->name('update.user_profile') ;
+    Route::get('profile','UserController@userProfile')->name('user_profile');
+    Route::post('user_profile/image','UserController@image')->name('post.user_image');
+    Route::put('user_profile/{id}','UserController@update')->name('update.user_profile');
     //Route::post('/change_password','UserController@change_password');
     //Route::get('user-profile/{id}','UserController@edit')->name('user-profile');
     //to show the building list

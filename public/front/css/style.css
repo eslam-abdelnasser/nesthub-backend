@@ -777,10 +777,6 @@ input[type=checkbox]:checked+label:before {
     background-color: transparent
 }
 
-.rightside-navbar {
-    padding: 21px 0 20px
-}
-
 .rightside-navbar li .button {
     border-radius: 3px;
     padding: 3px 10px!important
@@ -3944,12 +3940,7 @@ mark {
     font-size: 16px
 }
 
-.nav>li {
-    position: relative;
-    display: block;
-    font-weight: 600;
-    text-align: center
-}
+
 
 .nav-tabs {
     border-bottom: 1px solid transparent;

@@ -46,6 +46,8 @@ class UserController extends Controller
     {
         // 'name', 'email', 'password','mobile_number','type','title','about_me'
 
+
+//        return  $request->all();
         $update = User::where('id', Auth::user()->id)
             ->update([
                 'name' => $request->input('name'),
@@ -55,26 +57,10 @@ class UserController extends Controller
                 'about_me' => $request->input('about_me'),
             ]);
         if ($update) {
-            return redirect()->route('user-profile.edit', ['user_profile' => Auth::user()->id])->with('success', 'Profile  Updated Successfully');
+            return json_encode(['success'=>'updated sucessfully']);
         }
         //redirect
         return back()->withInput();
-    }
-
-    public function upload_image(Request $request){
-
-        $images = $request->file('images') ;
-        $image_name = time().$images->getClientOriginalName().'.'.$images->getClientOriginalExtension() ;
-        $images->move(public_path('/images/user_image'),$image_name);
-        $user=new User;
-        $user->img_url=$image_name;
-        $user->save();
-//        $image = User::where('id',Auth::user()->id)->updateOrCreate([
-//          'img_url'=> $request->file('images')
-//        ]) ;
-
-        return redirect()->route('user-profile.edit', ['user_profile' => Auth::user()->id]);
-
     }
 
    public function change_password(Request $request){
@@ -99,6 +85,11 @@ class UserController extends Controller
            $image_resize = Image::make($file->getRealPath());
            $image_resize->resize(160, 160);
            $image_resize->save(public_path('uploads/user_image/' .$filename));
+
+
+           $user = User::find(Auth::user()->id);
+           $user->img_url = $filename ;
+           $user->save();
 
            return $filename ;
        }

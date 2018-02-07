@@ -27,8 +27,8 @@
                     <!-- User account box start -->
                     <div class="user-account-box">
                         <div class="header clearfix">
-                            <h3>John Doe</h3>
-                            <p>johndoe@gmail.com</p>
+                            <h3>{{Auth::user()->name}}</h3>
+                            <p>{{Auth::user()->email}}</p>
                             <div class="edit-profile-photo">
                                 @if(Auth::user()->img_url == null)
                                 <img src="{{asset('front/img/avatar/avatar-3.jpg')}}" id="user_image" alt="agent-1" class="img-responsive">
@@ -90,28 +90,29 @@
                             <h1><span>Advanced</span> Search</h1>
                         </div>
 
-                        <form action="http://template.themevessel.com/the-nest/index.html" method="Post">
+                        <form action="{{route('update.user_profile',[ 'id' => Auth::user()->id])}}" method="post" id="user_profile_data">
+                            <input type="hidden" name="_method" value="PUT"/>
                             <div class="form-group">
                                 <label>Your Name</label>
-                                <input type="text" class="input-text" name="your name" placeholder="John Antony">
+                                <input type="text" class="input-text" name="name" value="{{Auth::user()->name}}" placeholder="John Antony">
                             </div>
                             <div class="form-group">
                                 <label>Your Title</label>
-                                <input type="text" class="input-text" name="agent" placeholder="Your title">
+                                <input type="text" class="input-text" name="title" value="{{Auth::user()->title}}" placeholder="Your title">
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="text" class="input-text" name="phone" placeholder="+55 4XX-634-7071">
+                                <input type="text" class="input-text" name="mobile_number" value="{{Auth::user()->mobile_number}}" placeholder="+55 4XX-634-7071">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="input-text" name="email" placeholder="johndoe@gmail.com">
+                                <input type="email" class="input-text" name="email" value="{{Auth::user()->email}}" placeholder="johndoe@gmail.com">
                             </div>
                             <div class="form-group">
                                 <label>About Me</label>
-                                <textarea class="input-text" name="message" placeholder="Etiam luctus malesuada quam eu aliquet. Donec eget mollis tortor. Donec pellentesque eros a nisl euismod, ut congue orci ultricies. Fusce aliquet metus non arcu varius ullamcorper a sit amet nunc. Donec in lacus neque. Vivamus ullamcorper sed ligula vitae "></textarea>
+                                <textarea class="input-text" name="about_me" placeholder="Etiam luctus malesuada quam eu aliquet. Donec eget mollis tortor. Donec pellentesque eros a nisl euismod, ut congue orci ultricies. Fusce aliquet metus non arcu varius ullamcorper a sit amet nunc. Donec in lacus neque. Vivamus ullamcorper sed ligula vitae ">{{Auth::user()->about_me}}</textarea>
                             </div>
-                            <button class="btn button-md button-theme">
+                            <button class="btn button-md button-theme" id="form_submit">
                                 Save Changes
                             </button>
                         </form>
@@ -145,14 +146,32 @@
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                    // $("#divider").html(data);
-                   // console.log(data);
-
                     $('#user_image').attr("src","{{asset('uploads/user_image')}}/" + data);
-                    // alert('done');
+                }
+            });
+        });
+
+        $('#user_profile_data').submit(function (e) {
+
+
+            var url = $(this).attr('action'); // the script where you handle the form input.
+            var method =$(this).attr('method');
+
+            $.ajax({
+                type: method,
+                url: url,
+                dataType: "json",
+                data: $(this).serialize(), // serializes the form's elements.
+                success: function(data)
+                {
+
+                    alert(data.success)
+                    // console.log(data); // show response from the php script.
                 }
             });
 
-        })
+
+            e.preventDefault() ;
+        });
     </script>
 @endpush
