@@ -209,22 +209,22 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
 <script>
 
-    $("#file-3").fileinput({
-        theme: 'fa',
-        showUpload: false,
-        showCaption: false,
-        browseClass: "btn btn-primary btn-lg",
-        fileType: "any",
-        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-        overwriteInitial: false,
-        initialPreviewAsData: true,
-        initialPreview: [
-
-        ],
-        initialPreviewConfig: [
-
-        ]
-    });
+    // $("#file-3").fileinput({
+    //     theme: 'fa',
+    //     showUpload: false,
+    //     showCaption: false,
+    //     browseClass: "btn btn-primary btn-lg",
+    //     fileType: "any",
+    //     previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+    //     overwriteInitial: false,
+    //     initialPreviewAsData: true,
+    //     initialPreview: [
+    //
+    //     ],
+    //     initialPreviewConfig: [
+    //
+    //     ]
+    // });
 
     $(document).ready(function () {
         var count=0;

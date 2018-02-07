@@ -21,23 +21,12 @@ background-color: rgba(0,0,0,.9);
 	background-color: transparent;
 	color: #fff;
 }
-#rightMenu a.w3-bar-item
-{
-background-color: transparent;
-font-size: 17px;
-color: #fff;
-}
+
 .navbar-header
 {
 	padding-left:2%;
 }
-.navbar
-{
-border-bottom: 1px solid #eee;
-background:#fff ;
-width: 100%;
-padding-right:2%;
-}
+
 ul.navbar-right  li a
 {
 	margin-top: -21px;
@@ -510,23 +499,12 @@ background-color: rgba(0,0,0,.9);
 	background-color: transparent;
 	color: #fff;
 }
-#rightMenu a.w3-bar-item
-{
-background-color: transparent;
-font-size: 17px;
-color: #fff;
-}
+
 .navbar-header
 {
 	padding-left:2%;
 }
-.navbar
-{
-border-bottom: 1px solid #eee;
-background:#fff ;
-width: 100%;
-padding-right:2%;
-}
+
 ul.navbar-right  li a
 {
 	margin-top: -21px;

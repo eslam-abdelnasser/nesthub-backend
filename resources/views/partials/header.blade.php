@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/ie10-viewport-bug-workaround.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front/css/listing.css')}}" />
     @stack('css')
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
