@@ -15,7 +15,7 @@ class CreateOfficesTable extends Migration
     {
         Schema::create('offices', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('office_type') ; // 0  offices & 1 hot desks $ 2 fixed
+            $table->tinyInteger('office_type') ; // 0 private office & 1 hot desks $ 2 fixed desk
             $table->integer('building_id')->unsigned() ;
             $table->integer('desks_available')->unsigned();
             $table->string('square_footage')->nullable();
