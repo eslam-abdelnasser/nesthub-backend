@@ -47,20 +47,20 @@ class UserController extends Controller
         // 'name', 'email', 'password','mobile_number','type','title','about_me'
 
 
-        return  $request->all();
-//        $update = User::where('id', Auth::user()->id)
-//            ->update([
-//                'name' => $request->input('name'),
-//                'email' => $request->input('email'),
-//                'mobile_number' => $request->input('mobile_number'),
-//                'title' => $request->input('title'),
-//                'about_me' => $request->input('about_me'),
-//            ]);
-//        if ($update) {
-//            return redirect()->route('user-profile.edit', ['user_profile' => Auth::user()->id])->with('success', 'Profile  Updated Successfully');
-//        }
-//        //redirect
-//        return back()->withInput();
+//        return  $request->all();
+        $update = User::where('id', Auth::user()->id)
+            ->update([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'mobile_number' => $request->input('mobile_number'),
+                'title' => $request->input('title'),
+                'about_me' => $request->input('about_me'),
+            ]);
+        if ($update) {
+            return json_encode(['success'=>'updated sucessfully']);
+        }
+        //redirect
+        return back()->withInput();
     }
 
    public function change_password(Request $request){

@@ -27,12 +27,7 @@ background-color: rgba(0,0,0,.9);
 	padding-left:2%;
 }
 
-ul.navbar-right  li a
-{
-	margin-top: -21px;
-	width: 120px;
-	height: 20px;
-}
+
 .logo:after
 {
 	content: '' !important;
@@ -505,12 +500,6 @@ background-color: rgba(0,0,0,.9);
 	padding-left:2%;
 }
 
-ul.navbar-right  li a
-{
-	margin-top: -21px;
-	width: 120px;
-	height: 20px;
-}
 .logo:after
 {
 	content: '' !important;

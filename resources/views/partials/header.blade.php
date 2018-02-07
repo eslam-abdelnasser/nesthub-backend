@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('front/fonts/linearicons/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/jquery.mCustomScrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/dropzone.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front/css/fileinput.min.css')}}">
     <!-- Custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/style.css')}}">
     {{--<link rel="stylesheet" type="text/css" id="style_sheet" href="{{asset('front/css/skins/default.css')}}">--}}

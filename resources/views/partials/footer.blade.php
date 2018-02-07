@@ -196,6 +196,7 @@
 <script type="text/javascript" src="{{asset('front/js/leaflet-providers.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/leaflet.markercluster.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/dropzone.js')}}"></script>
+<script type="text/javascript" src="{{asset('front/js/fileinput.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/jquery.filterizr.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/maps.js')}}"></script>
 <script type="text/javascript" src="{{asset('front/js/app.js')}}"></script>
@@ -209,22 +210,22 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
 <script>
 
-    // $("#file-3").fileinput({
-    //     theme: 'fa',
-    //     showUpload: false,
-    //     showCaption: false,
-    //     browseClass: "btn btn-primary btn-lg",
-    //     fileType: "any",
-    //     previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-    //     overwriteInitial: false,
-    //     initialPreviewAsData: true,
-    //     initialPreview: [
-    //
-    //     ],
-    //     initialPreviewConfig: [
-    //
-    //     ]
-    // });
+    $("#file-3").fileinput({
+        theme: 'fa',
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-primary btn-lg",
+        fileType: "any",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        overwriteInitial: false,
+        initialPreviewAsData: true,
+        initialPreview: [
+
+        ],
+        initialPreviewConfig: [
+
+        ]
+    });
 
     $(document).ready(function () {
         var count=0;

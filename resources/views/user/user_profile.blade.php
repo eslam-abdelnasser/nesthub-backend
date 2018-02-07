@@ -110,7 +110,7 @@
                             </div>
                             <div class="form-group">
                                 <label>About Me</label>
-                                <textarea class="input-text" name="message" placeholder="Etiam luctus malesuada quam eu aliquet. Donec eget mollis tortor. Donec pellentesque eros a nisl euismod, ut congue orci ultricies. Fusce aliquet metus non arcu varius ullamcorper a sit amet nunc. Donec in lacus neque. Vivamus ullamcorper sed ligula vitae ">{{Auth::user()->about_me}}</textarea>
+                                <textarea class="input-text" name="about_me" placeholder="Etiam luctus malesuada quam eu aliquet. Donec eget mollis tortor. Donec pellentesque eros a nisl euismod, ut congue orci ultricies. Fusce aliquet metus non arcu varius ullamcorper a sit amet nunc. Donec in lacus neque. Vivamus ullamcorper sed ligula vitae ">{{Auth::user()->about_me}}</textarea>
                             </div>
                             <button class="btn button-md button-theme" id="form_submit">
                                 Save Changes
@@ -160,9 +160,12 @@
             $.ajax({
                 type: method,
                 url: url,
+                dataType: "json",
                 data: $(this).serialize(), // serializes the form's elements.
                 success: function(data)
                 {
+
+                    alert(data.success)
                     // console.log(data); // show response from the php script.
                 }
             });
