@@ -19,7 +19,7 @@
 use App\Notifications\NewBuilding;
 
 Auth::routes();
-Route::get('/','Frontend\HomeController@index');
+Route::get('/','Frontend\HomeController@index')->name('home');
 //Route::get('/build/{name}','Frontend');
 Route::middleware(['auth'])->group(function () {
 //    Route::get('/','Frontend\BuildingController@index')->name('hola');
@@ -29,10 +29,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profile','UserController@userProfile')->name('user_profile');
     Route::post('user_profile/image','UserController@image')->name('post.user_image');
     Route::put('user_profile/{id}','UserController@update')->name('update.user_profile');
-    //Route::post('/change_password','UserController@change_password');
-    //Route::get('user-profile/{id}','UserController@edit')->name('user-profile');
+    Route::get('change','UserController@get_change_password')->name('change_password');
+    Route::post('change_password','UserController@change_password')->name('post.change_password');
     //to show the building list
-    Route::get('/my_property','Frontend\BuildingController@index')->name('my-property');
+    Route::get('/my_property','Frontend\BuildingController@index')->name('my_property');
 
 //    Route::get('/','Frontend\BuildingController@index')->name('hola');
 

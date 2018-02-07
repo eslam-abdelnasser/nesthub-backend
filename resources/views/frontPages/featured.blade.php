@@ -15,7 +15,14 @@
                 @foreach($P_buildings as $building)
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1, 3">
                     <div class="col-item property">
-                        <div class="photo"> <img src="{{asset('front/img/properties/properties-4.jpg')}}" class="img-responsive" alt="a" /> </div>
+                        <div class="photo">
+                            @if(!$building->images->count())
+
+                                <img src="{{asset('front/img/my-properties/my-properties-1.jpg')}}" alt="my-properties-1" class="img-responsive hidden-xs">
+                            @else
+                                <img src="{{asset('images')}}/{{$building->images->first()->image_url}}" alt="my-properties-1" class="img-responsive hidden-xs">
+                            @endif
+                        </div>
                         <div class="info">
                             <div class="top-info">
                                 <div class="container-fluid">

@@ -13,7 +13,10 @@
                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <!-- Agent box start -->
                         <div class="agent-box">
-                            <div class=""><div class="photo"> <img src="{{asset('front/img/properties/properties-4.jpg')}}" class="img-responsive" alt="a" /> </div>
+                            <div class="">
+                                <div class="photo">
+                                    <img src="{{asset('front/img/properties/properties-4.jpg')}}" class="img-responsive" alt="a" />
+                                </div>
                                 <div class="info">
                                     <div class="top-info">
                                         <div class="container-fluid">

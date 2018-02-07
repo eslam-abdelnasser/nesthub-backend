@@ -62,18 +62,33 @@ class UserController extends Controller
         //redirect
         return back()->withInput();
     }
+   public  function get_change_password(){
+       $users = User::all()->first();
+       //dd($users);
 
+       return view('user.change', ['users' => $users]);
+   }
    public function change_password(Request $request){
 
-       $update = User::where('id', Auth::user()->id)
-           ->update([
-               'password' => $request->input('password'),
-           ]);
-       if ($update) {
-           return redirect()->route('user-profile.edit', ['user_profile' => Auth::user()->id])->with('success', 'Profile  Updated Successfully');
-       }
-       //redirect
-       return back()->withInput();
+       $password=User::where('id',Auth::user()->id);
+        if($request->input('current-password')==$password)
+        {
+            $update = User::where('id', Auth::user()->id)
+                ->update([
+                    'password' => $request->input('new-password'),
+                ]);
+            if ($update) {
+                return json_encode(['success'=>'updated sucessfully']);
+            }
+            else{
+                return "sara";
+            }
+        }
+        else
+        {
+            return json_encode(['error'=>'Your Current Password Incorrect ']);
+        }
+
    }
 
 

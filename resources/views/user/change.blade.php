@@ -76,56 +76,32 @@
                     <!-- User account box end -->
                 </div>
 
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                    <div class="main-title-2">
-                        <h1><span>My</span> Properties</h1>
+                <div class="col-lg-8 col-md-8 col-sm-7">
+                    <!-- My address start -->
+                    <div class="my-address">
+                        <div class="main-title-2">
+                            <h1><span>Change</span> Password</h1>
+                        </div>
+
+                        <form action="{{route('post.change_password')}}" method="post" id="user_profile_data" >
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input type="password" class="input-text" name="current-password"  placeholder="Current Password"  required>
+                            </div>
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" class="input-text" name="new-password" placeholder="New Password" required>
+                            </div>
+                            <button class="btn button-md button-theme" id="form_submit">
+                                Save Changes
+                            </button>
+                        </form>
                     </div>
-                @foreach($buildings as $building)
-                    <!-- table start -->
-                        <table class="manage-table responsive-table">
-                            <tbody>
-                            @if(count($buildings))
-                                <ul>
-
-
-                                    <tr>
-                                        <td class="title-container">
-                                            @if(!$building->images->count())
-
-                                            <img src="{{asset('front/img/my-properties/my-properties-1.jpg')}}" alt="my-properties-1" class="img-responsive hidden-xs">
-                                            @else
-                                                <img src="{{asset('images')}}/{{$building->images->first()->image_url}}" alt="my-properties-1" class="img-responsive hidden-xs">
-                                            @endif
-                                            <div class="title">
-                                                <h4><a href="#"> {{$building->name}} </a></h4>
-                                                <span><i class="fa fa-map-marker"></i> {{$building->full_address}} </span>
-                                                <span class="table-property-price">$900 / monthly</span>
-                                            </div>
-                                        </td>
-                                        <td class="expire-date hidden-xs">{{
-
-                                      // $date=date("d", $building->created_at)
-                                        date('l jS \of F Y', strtotime($building->created_at))
-                                        }}</td>
-                                        <td class="action">
-                                            <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                                            <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                                            <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                                        </td>
-                                    </tr>
-
-                                </ul>
-                            @else
-                                <h1> no building added</h1>
-                            @endif
-                            </tbody>
-                        </table>
-
-
-                    @endforeach
+                    <!-- My address end -->
                 </div>
             </div>
         </div>
+    </div>
 
         <!-- Counters strat -->
         <div class="counters">
@@ -165,7 +141,7 @@
         </div>
         <!-- Counters end -->
 
-@endsection
+        @endsection
         @push('scripts')
         <script>
 
@@ -188,7 +164,28 @@
                     }
                 });
             });
+            $('#user_profile_data').submit(function (e) {
 
+
+                var url = $(this).attr('action'); // the script where you handle the form input.
+                var method =$(this).attr('method');
+
+                $.ajax({
+                    type: method,
+                    url: url,
+                    dataType: "json",
+                    data: $(this).serialize(), // serializes the form's elements.
+                    success: function(data)
+                    {
+
+                        alert(data)
+                        // console.log(data); // show response from the php script.
+                    }
+                });
+
+
+                e.preventDefault() ;
+            });
 
         </script>
     @endpush

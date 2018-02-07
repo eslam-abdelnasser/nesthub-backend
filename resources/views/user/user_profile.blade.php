@@ -49,18 +49,13 @@
                         <div class="content">
                             <ul>
                                 <li>
-                                    <a href="user-profile.html" class="active">
+                                    <a href="{{route('user_profile')}}">
                                         <i class="flaticon-social"></i>Profile
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="my-properties.html">
+                                    <a href="{{route('my_property')}}" class="active">
                                         <i class="flaticon-apartment"></i>My Properties
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="favorited-properties.html">
-                                        <i class="fa fa-heart"></i>Favorited Properties
                                     </a>
                                 </li>
                                 <li>
@@ -74,7 +69,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{route('logout')}}">
                                         <i class="flaticon-sign-out-option"></i>Log Out
                                     </a>
                                 </li>
