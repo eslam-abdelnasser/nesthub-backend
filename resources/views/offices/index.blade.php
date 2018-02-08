@@ -4,7 +4,21 @@
 
 
 @section('content')
-
+    <!-- Sub banner start -->
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <div class="breadcrumb-area">
+                    <h1>Add Your Space</h1>
+                    <ul class="breadcrumbs">
+                        <li><a href="">Home</a></li>
+                        <li class="active">Add Your Space</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Banner end -->
     <!-- start feature building-->
     <div class="feature-building">
         <div class="container">
@@ -57,14 +71,14 @@
 
                         <!--end tab-->
 
-                        <div class="tab-pane step2-tab" id="step2">
+                        <div class="tab-pane step2-tab active" id="step2">
                           <div class="row">
                             <section class=" office col-md-12 ">
                                 <div class="office-btn">
                                 <a class="btn btn-warning" id="addOffice" href="#warningModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i> ADD NEW OFFICE</a>
                                 </div>
                         <!-- Modal -->
-                                <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal fade" style="z-index: 99999;" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
                                 <div class="modal-header modal-header-warning">
@@ -317,31 +331,6 @@
 
 
 
-    <script type="text/javascript" >
-
-      $('#private').click(function () {
-
-          $('#office_type').val('private');
-          $('#footage').show();
-
-      });
-
-      $('#hot').click(function () {
-
-          $('#office_type').val('hot');
-          $('#footage').hide();
-
-
-      });
-      $('#fixed').click(function () {
-
-          $('#office_type').val('fixed');
-          $('#footage').hide();
-
-      });
-
-    </script>
-
 
 
 
@@ -352,3 +341,35 @@
 
 
 @endsection
+
+
+
+@push('scripts')
+
+
+    <script type="text/javascript" src="{{asset('front/scripts/Listing.js')}}"></script>
+    <script type="text/javascript" >
+
+        $('#private').click(function () {
+
+            $('#office_type').val('private');
+            $('#footage').show();
+
+        });
+
+        $('#hot').click(function () {
+
+            $('#office_type').val('hot');
+            $('#footage').hide();
+
+
+        });
+        $('#fixed').click(function () {
+
+            $('#office_type').val('fixed');
+            $('#footage').hide();
+
+        });
+
+    </script>
+@endpush

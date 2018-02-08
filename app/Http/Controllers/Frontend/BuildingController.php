@@ -173,7 +173,7 @@ class BuildingController extends Controller
 //        Session::flash('success',' Now Your Building is Live');
 
 //        dd("success");
-        return redirect()->route('hola');
+        return redirect()->route('my-property');
 
     }
 }

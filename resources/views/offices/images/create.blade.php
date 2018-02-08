@@ -4,7 +4,21 @@
 
 
 @section('content')
-
+    <!-- Sub banner start -->
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <div class="breadcrumb-area">
+                    <h1>Add Your Space</h1>
+                    <ul class="breadcrumbs">
+                        <li><a href="">Home</a></li>
+                        <li class="active">Add Your Space</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Banner end -->
     <!-- start feature building-->
     <div class="feature-building">
         <div class="container">
