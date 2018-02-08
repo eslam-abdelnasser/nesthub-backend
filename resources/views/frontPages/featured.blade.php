@@ -31,16 +31,12 @@
                             </div>
                             <hr>
                                 <div class="bot-info">
-                                    @foreach($building->offices as $office)
-                                        @php
-                                        $fixed = 0;
-                                        $private = 0;
-                                        @endphp
+
+                                @php $fixed = 0;$private = 0; @endphp
+                                @foreach($building->offices as $office)
                                         <div class="separator clear-left">
                                             @if($office->office_type == 2 and $fixed == 0)
-                                                @php
-                                                    $fixed = 1;
-                                                @endphp
+                                                @php $fixed = 1; @endphp
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Fixed Disk</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>
@@ -48,7 +44,9 @@
                                                 </div>
                                             @endif
                                             @if($office->office_type == 0 and $private == 0)
+
                                                     @php $private = 1 ;@endphp
+
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Private Office</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>
@@ -88,16 +86,19 @@
                                 </div>
                                 <hr>
                                 <div class="bot-info">
-                                    @foreach($building->offices as $office)
+                                @php $fixed = 0;$hot = 0; @endphp
+                                @foreach($building->offices as $office)
                                         <div class="separator clear-left">
-                                            @if($office->office_type == 2)
+                                            @if($office->office_type == 2 and $fixed == 0)
+                                                @php $fixed=1; @endphp
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Fixed Disk</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>
                                                     <p class="office off-color">Per month</p>
                                                 </div>
                                             @endif
-                                            @if($office->office_type == 1)
+                                            @if($office->office_type == 1 and $hot == 0)
+                                                @php $hot = 1; @endphp
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Hot Desk</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>
@@ -137,9 +138,11 @@
                                 </div>
                                 <hr>
                                 <div class="bot-info">
-                                    @foreach($building->offices as $office)
+                                @php $private = 0; @endphp
+                                @foreach($building->offices as $office)
                                         <div class="separator clear-left">
-                                            @if($office->office_type == 0)
+                                            @if($office->office_type == 0 and $private == 0)
+                                                @php $private=1; @endphp
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Private Office</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>
@@ -159,8 +162,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
         </div>
     </div>
