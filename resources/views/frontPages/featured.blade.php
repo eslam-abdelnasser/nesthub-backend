@@ -32,10 +32,15 @@
                             <hr>
                                 <div class="bot-info">
                                     @foreach($building->offices as $office)
-                                        <?php $fixed = 0;$private = 0 ?>
+                                        @php
+                                        $fixed = 0;
+                                        $private = 0;
+                                        @endphp
                                         <div class="separator clear-left">
                                             @if($office->office_type == 2 and $fixed == 0)
-                                                <?php $fixed = 1 ?>
+                                                @php
+                                                    $fixed = 1;
+                                                @endphp
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Fixed Disk</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>
@@ -43,7 +48,7 @@
                                                 </div>
                                             @endif
                                             @if($office->office_type == 0 and $private == 0)
-                                                    <?php $private = 1 ?>
+                                                    @php $private = 1 ;@endphp
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Private Office</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>

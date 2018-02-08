@@ -19,7 +19,8 @@
 use App\Notifications\NewBuilding;
 
 Auth::routes();
-Route::get('/','Frontend\HomeController@index');
+Route::get('/','Frontend\HomeController@index')->name('home');
+Route::get('/test','Frontend\BuildingDescriptionController@index');
 //Route::get('/build/{name}','Frontend');
 Route::middleware(['auth'])->group(function () {
 //    Route::get('/','Frontend\BuildingController@index')->name('hola');

@@ -5613,8 +5613,8 @@ a {
 }
 
                         }
-                        
-  
+
+
 .sub-ti{
     font-size: 12px;
     color: #7b7b7b;
@@ -11694,7 +11694,7 @@ ul.list-head.list-group {
     .capption {
         margin-top: 100px;
     }
-    
+
 =======
 /* Outer */
 .popup {
@@ -11725,7 +11725,7 @@ background:#fff;
 .popup-inner h2
 {
     color:darkblue;
-    float:left; 
+    float:left;
 }
 /* Close Button */
 .popup-close {
@@ -11753,7 +11753,7 @@ transform:translate(50%, -50%) rotate(180deg);
 background:rgba(0,0,0,1);
 text-decoration:none;
 }
-table, td, th {    
+table, td, th {
 text-align: left;
 }
 
