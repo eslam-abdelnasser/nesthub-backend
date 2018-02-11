@@ -13,7 +13,7 @@ class BuildingDescriptionController extends Controller
 
     public function index()
     {
-        $building  = Building::find(8);
+        $building  = Building::find(3);
         $B_facilities = Facility::all()->where('type',0);
         $A_facilities = Facility::all()->where('type',1);
         $highlight = json_decode($building->addtionals->additional);
