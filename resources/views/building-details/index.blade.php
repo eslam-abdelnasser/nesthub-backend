@@ -5,7 +5,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/rentcss.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/custom-slider.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/owl.carousel.min.css')}}" />
-
 @endpush
 @section('content')
 
@@ -103,11 +102,8 @@
             </svg>
         </div>
     </div>
-
     <!-- #endregion Jssor Slider End -->
     <!-- END CAROUSEL -->
-
-
     <!-- start first-section-->
     <section class="container">
         <!--  remove style="margin-top:120px; " effect in all style   -->
@@ -120,14 +116,14 @@
                             <div class="row">
                                 <div class="col-md-8 ">
                                     <div class="col-md-12">
-                                        <h2 class="home-text">Second Home - London Fields</h2>
+                                        <h2 class="home-text">{{$building->name}}</h2>
                                     </div>
 
                                     <div class="col-md-12">
                                         <p class="home-location">
                                             <i class="fa fa-map-marker" aria-hidden="true">
                                                 <!-- add home-location use in  media -->
-                                            </i>E8, Cairo
+                                            </i>{{$building->full_address}}
                                         </p>
                                     </div>
 
@@ -147,25 +143,8 @@
                             <span class="home-welcome">Welcome</span>
                             <!-- add home-welcome  use in media     -->
                             <hr>
-                            <span>
-                                <h3 class="home-open">Opnening 2018</h3>
-                                <!-- change b to h3 && add  home-open use in media  -->
-                            </span>
-                            <p class="home-open-p">
-                                <!-- add hom-open-p use in media   -->
-                                The most magical & innovative working environment in the heart of London Fields, Second Home enables parents to combine work
-                                & life easier than ever before. The space provides private studios & flexible workspaces
-                                for teams of up to 50 - all surrounded by curves, natural light & thousands of plants & trees.
-                                Members will enjoy access to our world-class Cultural Programme, Member-only Be Better sessions
-                                & weekly wellness programme, as well as on-site creche & family-friendly public areas
-                            </p>
-                            <br>
-                            <p class="home-words">Our space in three words:</p>
-                            <!-- add hom-open-p use in media   -->
-                            <span class="home-words-span">Plants, Creativity, Community</span>
-                            <p class="home-words">What we love about our space:</p>
-                            <!-- add hom-open-p use in media   -->
-                            <span class="home-words-span">Iconic Architecture, Amazing Community, World-Class Cultural Programme</span>
+
+                            <p class="home-open-p">{{$building->welcome_message}}</p>
                             <br>
                             <br>
                         </div>
@@ -190,233 +169,248 @@
                         <!--END LOCATION-->
                         <!-- OFFICE-->
                         <div class="office-details clearfix">
+                            <br>
+
+                            <br>
                             <!-- remove margin top 300px and use tag clear fix   -->
                             <div class="container">
                                     <span>
                                             <b>Office Details</b>
-                                        </span>
+                                    </span>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6  tabs-area">
-
-
                                         <ul class="nav nav-tabs custom-tabs">
                                             <!-- custom tab use in media   -->
-                                            <li class="active">
-                                                <a data-toggle="tab" href="#home">Hot Desk
-                                                    <br>
-                                                    <small>250LE per Month</small>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="tab" href="#menu1">Fixed Desk
-                                                    <br>
-                                                    <small>350LE per Month</small>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="tab" href="#menu2">Private Office
-                                                    <br>
-                                                    <small>450LE per Month</small>
-                                                </a>
-                                            </li>
+                                            @php $found = 0; @endphp
+                                            @foreach($building->offices as $office)
+                                                @if($office->office_type == 1 and $found == 0)
+                                                    @php $found = 1; @endphp
+                                                        <li class="active">
+                                                            <a data-toggle="tab" href="#home">Hot Desk
+                                                                <br>
+                                                                <small>{{$office->price}} LE per Month</small>
+
+                                                            </a>
+                                                        </li>
+                                                @endif
+                                            @endforeach
+
+                                            @php $found = 0; @endphp
+                                            @foreach($building->offices as $office)
+                                                @if($office->office_type == 2 and $found == 0)
+                                                    @php $found = 1; @endphp
+                                                        <li>
+                                                            <a data-toggle="tab" href="#menu1">Fixed Desk
+                                                                <br>
+                                                                <small>{{$office->price}} LE per Month</small>
+                                                            </a>
+                                                        </li>
+                                                @endif
+                                            @endforeach
+
+                                            @php $found = 0; @endphp
+                                            @foreach($building->offices as $office)
+                                                @if($office->office_type == 0 and $found == 0)
+                                                    @php $found = 1; @endphp
+                                                        <li>
+                                                            <a data-toggle="tab" href="#menu2">Private Office
+                                                                <br>
+                                                                <small>{{$office->price}} LE per Month</small>
+                                                            </a>
+                                                        </li>
+                                                @endif
+                                            @endforeach
                                         </ul>
                                     </div>
-
-                                    <!--tab1-->
                                     <div class="tab-content  col-md-6 clearfix">
-                                        <div id="home" class="tab-pane fade in active ">
-                                            <img src="{{asset('front/images/slide-1.jpg')}}">
-                                            <!-- <br>
-                                                <br> -->
-                                            <!-- remove br   -->
-                                            <div class="main-content">
+                                        <!--tab1-->
+                                        @php $found = 0; @endphp
+                                        @foreach($building->offices as $office)
+                                            @if($office->office_type == 1 and $found == 0)
+                                                @php $found = 1; @endphp
+                                                    <div id="home" class="tab-pane fade in active ">
+                                                        {{--<img src="{{asset('front/images/slide-1.jpg')}}">--}}
+                                                        <!-- <br>
+                                                            <br> -->
+                                                        <!-- remove br   -->
+                                                        <div class="main-content">
 
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <span>
-                                                            <i class="fa fa-check" aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                    <!-- <div class="container"> -->
-                                                    <div class="col-md-10 availableDesk">
-                                                        <b>250LE per month</b>
-                                                        <br>
-                                                        <small>Desks available: 100</small>
-                                                        <br>
-                                                        <a href="#">HIDE DETAILS</a>
-                                                    </div>
-                                                    <!-- </div> -->
-                                                </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <span>
+                                                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <!-- <div class="container"> -->
+                                                                <div class="col-md-10 availableDesk">
+                                                                    <b>{{$office->price}} LE per month</b>
+                                                                    <br>
+                                                                    <small>Desks available: {{$office->desks_available}}</small>
+                                                                    <br>
+                                                                    <a href="#">HIDE DETAILS</a>
 
-                                                <br>
-                                                <br>
-                                                <hr>
-                                                <div class="data">
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Roaming hot desks, based on the first floor</p>
-                                                    </div>
+                                                                </div>
+                                                                <!-- </div> -->
+                                                            </div>
 
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Flexible access to our collaborative workspaces</p>
-                                                    </div>
+                                                            <br>
+                                                            <br>
+                                                            <hr>
+                                                            <div class="data">
+                                                                <div class="col-md-1">
+                                                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="col-md-11 Paragraphs">
+                                                                    <p>Key Features</p>
+                                                                </div>
 
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Full access to all Second Home services and community, including
-                                                            exclusive Be Better education </p>
-                                                    </div>
+                                                                <div class="col-md-11 Paragraphs">
+                                                                    <p>{{$office->key_features}}</p>
+                                                                </div>
 
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="data">
+                                                                <br><br><br><br>
+                                                                <div class="col-md-1">
+                                                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="col-md-11 Paragraphs">
+                                                                    <p>Not Include</p>
+                                                                </div>
+
+                                                                <div class="col-md-11 Paragraphs">
+                                                                    <p>{{$office->not_included}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Suitable for individuals and small teams</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endif
+                                        @endforeach
                                         <!--end tab1-->
                                         <!--tab2-->
-                                        <div id="menu1" class="tab-pane fade">
-                                            <div class="main-content">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <span>
-                                                            <i class="fa fa-check" aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="col-md-10 availableDesk">
-                                                        <b>350LE per month</b>
-                                                        <br>
-                                                        <small>Desks available: 100</small>
-                                                        <br>
-                                                        <a href="#">HIDE DETAILS</a>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <br>
-                                                <hr>
-                                                <div class="data">
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Roaming hot desks, based on the first floor</p>
-                                                    </div>
+                                        @php $found = 0; @endphp
+                                        @foreach($building->offices as $office)
+                                            @if($office->office_type == 2 and $found == 0)
+                                                @php $found = 2; @endphp
+                                                     <div id="menu1" class="tab-pane fade">
+                                                         <div class="main-content">
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <span>
+                                                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="col-md-10 availableDesk">
+                                                                    <b>{{$office->price}} LE per month</b>
+                                                                    <br>
+                                                                    <small>Desks available: {{$office->desks_available}}</small>
+                                                                    <br>
+                                                                    <a href="#">HIDE DETAILS</a>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <br>
+                                                            <hr>
+                                                             <div class="data">
+                                                                 <div class="col-md-1">
+                                                                     <i class="fa fa-circle" aria-hidden="true"></i>
+                                                                 </div>
+                                                                 <div class="col-md-11 Paragraphs">
+                                                                     <p>Key Features</p>
+                                                                 </div>
 
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Flexible access to our collaborative workspaces</p>
-                                                    </div>
+                                                                 <div class="col-md-11 Paragraphs">
+                                                                     <p>{{$office->key_features}}</p>
+                                                                 </div>
 
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Full access to all Second Home services and community, including
-                                                            exclusive Be Better education </p>
-                                                    </div>
+                                                             </div>
+                                                             <div class="data">
+                                                                 <br><br><br><br>
+                                                                 <div class="col-md-1">
+                                                                     <i class="fa fa-circle" aria-hidden="true"></i>
+                                                                 </div>
+                                                                 <div class="col-md-11 Paragraphs">
+                                                                     <p>Not Include</p>
+                                                                 </div>
 
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="col-md-11 Paragraphs">
-                                                        <p>Suitable for individuals and small teams</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                                 <div class="col-md-11 Paragraphs">
+                                                                     <p>{{$office->not_included}}</p>
+                                                                 </div>
+                                                             </div>
+                                                          </div>
+                                                     </div>
+                                            @endif
+                                        @endforeach
                                         <!-- end tab2-->
                                         <!--tab3-->
-                                        <div id="menu2" class="tab-pane fade">
-                                            <div class="main-content">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <span>
-                                                            <i class="fa fa-check" aria-hidden="true"></i>
-
-                                                        </span>
-                                                    </div>
-                                                    <div class="col-md-10 availableDesk">
-                                                        <b>450LE per month</b>
-                                                        <br>
-                                                        <small>Desks available: 100</small>
-                                                        <br>
-                                                        <a href="#">HIDE DETAILS</a>
-                                                    </div>
-                                                </div>
-
-                                                <hr>
-                                                <div class="data">
-                                                    <div class="row">
-                                                        <div class="col-md-1 col-sm-2 col-xs-2">
-                                                            <i class="fa fa-circle" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="col-md-11 Paragraphs">
-                                                            <p>Roaming hot desks, based on the first floor</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-1 col-sm-2 col-xs-2">
-                                                            <i class="fa fa-circle" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="col-md-11 Paragraphs">
-                                                            <p>Flexible access to our collaborative workspaces</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-1 col-sm-2 col-xs-2">
-                                                            <i class="fa fa-circle" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="col-md-11 Paragraphs">
-                                                            <p>Full access to all Second Home services and community, including
-                                                                exclusive Be Better education </p>
-                                                        </div>
+                                        @php $found = 0; @endphp
+                                        @foreach($building->offices as $office)
+                                            @if($office->office_type == 0 and $found == 0)
+                                                @php $found = 2; @endphp
+                                                <div id="menu2" class="tab-pane fade">
+                                                    <div class="main-content">
                                                         <div class="row">
-
-                                                            <div class="col-md-1 col-sm-2 col-xs-2">
+                                                            <div class="col-md-2">
+                                                                    <span>
+                                                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                                                    </span>
+                                                            </div>
+                                                            <div class="col-md-10 availableDesk">
+                                                                <b>{{$office->price}} LE per month</b>
+                                                                <br>
+                                                                <small>Desks available: {{$office->desks_available}}</small>
+                                                                <br>
+                                                                <a href="#">HIDE DETAILS</a>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <hr>
+                                                        <div class="data">
+                                                            <div class="col-md-1">
                                                                 <i class="fa fa-circle" aria-hidden="true"></i>
                                                             </div>
                                                             <div class="col-md-11 Paragraphs">
-                                                                <p>Suitable for individuals and small teams</p>
+                                                                <p>Key Features</p>
+                                                            </div>
+
+                                                            <div class="col-md-11 Paragraphs">
+                                                                <p>{{$office->key_features}}</p>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="data">
+                                                            <br><br><br><br>
+                                                            <div class="col-md-1">
+                                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="col-md-11 Paragraphs">
+                                                                <p>Not Include</p>
+                                                            </div>
+
+                                                            <div class="col-md-11 Paragraphs">
+                                                                <p>{{$office->not_included}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- end tab3-->
-
-                                        </div>
+                                            @endif
+                                        @endforeach
+                                        <!-- end tab3-->
                                         <!--end tabContent -->
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
                         <!-- end office-->
 
                     </div>
                     <!-- end left part-->
                 </div>
+
+
+
                 <!--rigth part-->
                 <div class="col-md-4 custom-right">
                     <div class="right ">
@@ -426,55 +420,43 @@
                                 <div class="col-md-12 btn-group">
                                     <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
                                         <small class="sm" style="float: left;">
-                                            <b>Hot Desk |250LE p/m</b>
+                                            @if($building->offices[0]->office_type === 2)
+                                                <b>Hot Desk |{{$building->offices[0]->price}} LE p/m</b>
+                                            @endif
+                                            @if($building->offices[0]->office_type === 1)
+                                                <b>Fixed Desk |{{$building->offices[0]->price}}LE p/m</b>
+                                            @endif
+                                            @if($building->offices[0]->office_type === 0)
+                                                <b>Private Office|{{$building->offices[0]->price}}LE p/m</b>
+                                            @endif
+
                                         </small>
                                         <br>
-                                        <small>Desks available:100 </small>
-                                        <span>Available Now</span>
+                                        <small>Desks available:{{$building->offices[0]->desks_available}}</small>
+                                        <span>Available Now </span>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
+                                        @for($i=1;$i<$building->offices->count();$i++)
                                         <li>
                                             <a href="#">
                                                 <small>
-                                                    <b>Hot Desk |250LE p/m</b>
+                                                    @if($building->offices[$i]->office_type === 2)
+                                                        <b>Hot Desk |{{$building->offices[0]->price}} LE p/m</b>
+                                                    @endif
+                                                    @if($building->offices[$i]->office_type === 1)
+                                                        <b>Fixed Desk |{{$building->offices[$i]->price}}LE p/m</b>
+                                                    @endif
+                                                    @if($building->offices[$i]->office_type === 0)
+                                                        <b>Private Office|{{$building->offices[$i]->price}}LE p/m</b>
+                                                    @endif
                                                 </small>
                                                 <br>
-                                                <small>Desks available:100 </small>
+                                                <small>Desks available:{{$building->offices[$i]->desks_available}} </small>
                                                 <span>Available Now</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                <small>
-                                                    <b>Hot Desk |250LE p/m</b>
-                                                </small>
-                                                <br>
-                                                <small>Desks available:100 </small>
-                                                <span>Available Now</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <small>
-                                                    <b>Hot Desk |250LE p/m</b>
-                                                </small>
-                                                <br>
-                                                <small>Desks available:100 </small>
-                                                <span>Available Now</span>
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="#">
-                                                <small>
-                                                    <b>Hot Desk |250LE p/m</b>
-                                                </small>
-                                                <br>
-                                                <small>Desks available:100 </small>
-                                                <span>Available Now</span>
-                                            </a>
-                                        </li>
+                                        @endfor
                                     </ul>
                                 </div>
                             </div>
@@ -557,21 +539,7 @@
                                     <b> Exclusive Offer</b>
                                 </span>
                                 <p>
-                                    10% off your first three months of membership when you join Second Home through Hubble, plus a bespoke roundtable breakfast
-                                    with the Second Home community focused on your business.
-                                </p>
-                            </div>
-                        </div>
-                        <!--end part3-->
-                        <div class="part3 row ">
-                            <div class="col-md-12">
-                                <span>
-                                    <i class="fa fa-tags" aria-hidden="true"></i>&nbsp; &nbsp;
-                                    <b> Other Offers</b>
-                                </span>
-                                <p>
-                                    20% off your first three months of membership when you join Second Home through Hubble, plus a bespoke roundtable breakfast
-                                    with the Second Home community focused on your business.
+                                    {{$building->addtionals->exclusive_office}}
                                 </p>
                             </div>
                         </div>
@@ -595,55 +563,30 @@
                         <div class="part6 row">
                             <div class=" row">
                                 <div class="col-md-12 ">
-                                    <h4>Gallary</h4>
+                                    <h4>Gellary</h4>
                                     <hr>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-4  col-xs-4 col-sm-4 wow fadeInLeft" data-wow-delay="1.8s">
-                                        <img src="{{asset('front/images/slide-1.jpg')}}">
+                                @for($i = 0 ; $i < $building->images->count(); $i+=3)
+                                    <div class="row">
+                                        @for($j = $i ; $j < $i+3 ; $j++)
+                                            @if($j < $building->images->count())
+                                                <div class="col-md-4  col-xs-4 col-sm-4 wow fadeInLeft" data-wow-delay="1.8s">
+                                                     <img src="{{asset('front/images/slide-1.jpg')}}">
+                                                </div>
+                                            @endif
+                                        @endfor
                                     </div>
-                                    <div class="col-md-4 col-xs-4 col-sm-4 wow fadeInLeft" data-wow-delay="1.4s">
-                                        <img src="{{asset('front/images/slide-2.jpg')}}">
-                                    </div>
-                                    <div class="col-md-4 col-xs-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.8s">
-                                        <img src="{{asset('front/images/slide-3.jpg')}}">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 col-xs-4 col-sm-4 wow flipInY" data-wow-delay="2s">
-                                        <img src="{{asset('front/images/slide-5.jpg')}}">
-                                    </div>
-                                    <div class="col-md-4 col-xs-4 col-sm-4 wow flipInY" data-wow-delay="2.4s">
-                                        <img src="{{asset('front/images/slide-5.jpg')}}">
-                                    </div>
-                                    <div class="col-md-4 col-xs-4 col-sm-4 wow flipInY" data-wow-delay="2.8s">
-                                        <img src="{{asset('front/images/slide-6.jpg')}}">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 col-xs-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.4s">
-                                        <img src="{{asset('front/images/slide-1.jpg')}}">
-                                    </div>
-                                    <div class="col-md-4 col-xs-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.2s">
-                                        <img src="{{asset('front/images/slide-5.jpg')}}">
-                                    </div>
-                                    <div class="col-md-4 col-xs-4 col-sm-4 fadeInLeft" data-wow-delay="0.1s">
-                                        <img src="{{asset('front/images/slide-3.jpg')}}">
-                                    </div>
-                                </div>
+                                @endfor
                             </div>
                         </div>
                         <!--end part6-->
                     </div>
                 </div>
                 <!--end right part  -->
-
-
             </div>
         </div>
     </section>
     <!-- ------------------------------------------------------------------------------------------- -->
-
     <!-- start Facilites-->
     <div class="Facilies">
         <div class="container">
@@ -660,284 +603,82 @@
                         </span>
                     </div>
                     <br>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
+                    @for($i = 0 ; $i < $B_facilities->count() ; $i+=4)
+                        <div class="col-md-3 bus1">
+                            @for($j = $i; $j<$i+4; $j++)
+                                @if($j < $B_facilities->count())
+                                    <div>
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <span >{{$B_facilities[$j]->name}}</span>
+                                    </div>
+                                    <br>
+                                @endif
+                            @endfor
                         </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
+                    @endfor
                 </div>
                 <!--end busines-->
                 <!-- start Additional-->
 
-                <div class="Additional">
+                <div class="addtional">
                     <div>
                         <span>
                             <b>Additional</b>
                         </span>
                     </div>
                     <br>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
+                    @for($i = 0 ; $i < $A_facilities->count() ; $i+=4)
+                        <div class="col-md-3 bus1">
+                            @for($j = $i  ; $j<$i+4; $j++)
+                                @if($j < $A_facilities->count())
+                                    <div>
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <span >{{$A_facilities[$j + $B_facilities->count()]->name}}</span>
+                                    </div>
+                                    <br>
+                                @endif
+                            @endfor
                         </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="col-md-3 bus1">
-                        <div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="gray">Inventory Storage</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                        <div>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <span>Phone Booths</span>
-                        </div>
-                        <br>
-                    </div>
+                    @endfor
                 </div>
                 <!--end Additional-->
             </div>
         </div>
     </div>
-
     <!-- ------------------------------------------------------------------------------------------- -->
-
     <!-- start highlights-->
-
     <div class="highlights">
         <div class="container">
             <!-- <div> -->
             <span>
-                    <p>Highlights</p>
+                    <p>Highlights{{$highlights->description[0]}}</p>
                 </span>
             <hr>
             <!-- </div> -->
             <br>
+            @php $i=0; @endphp
+            @foreach($highlights->highlight as $highlight)
             <div class="row">
                 <div class=" ICONIC wow rollIn " data-wow-delay="1s">
 
                     <div class="col-md-1  col-xs-4 col-sm-4 ">
                         <div class="numbers">
-                            <div>1</div>
+                            <div> {{$i + 1}}</div>
                         </div>
                     </div>
                     <div class="col-md-11 col-xs-8 col-sm-8  arch">
-                        <h4>ICONIC ARCHITECTURE</h4>
-                        <p>Work amongst hundreds of plants and trees, in a workspace filled with bright colours and natural
-                            light.
-                        </p>
+                        <h4>{{$highlight}}</h4>
+                        <p>{{$highlights->description[$i]}}  </p>
                     </div>
+                </div>
+            </div>
+            <br>
+            <br>
+                @php $i++; @endphp
+            @endforeach
 
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="row">
 
-                <div class="ICONIC wow rollIn " data-wow-delay="2s">
-                    <div class="container">
-                        <div class="col-md-1 col-xs-4 col-sm-4">
-                            <div class="numbers ">
-                                <div>2</div>
-                            </div>
-                        </div>
-                        <div class="col-md-11 col-xs-8 col-sm-8 arch">
-                            <p>AMAZING COMMUNITY</p>
-                            <small>Teams based here include Kickstarter, Artsy, TaskRabbit, Help Refugees, Ernst & Young and
-                                Cushman & Wakefield.</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="row">
-                <div class="ICONIC wow rollIn " data-wow-delay="3s">
-                    <div class="container">
-                        <div class="col-md-1 col-xs-4 col-sm-4">
-                            <div class="numbers ">
-                                <div>3</div>
-                            </div>
-                        </div>
-                        <div class="col-md-11 col-xs-8 col-sm-8 arch">
-                            <p>WORLD-CLASS CULTURAL PROGRAMME</p>
-                            <small>Teams based here include Kickstarter, Artsy, TaskRabbit, Help Refugees, Ernst & Young and
-                                Cushman & Wakefield.</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <br>
-            <br>
-            <div class="row">
-                <div class="ICONIC wow rollIn " data-wow-delay="4s">
-                    <div class="container">
-                        <div class="col-md-1 col-xs-4 col-sm-4">
-                            <div class="numbers">
-                                <div>4</div>
-                            </div>
-                        </div>
-                        <div class="col-md-11 col-xs-8 col-sm-8 arch">
-                            <p>FAMILY-FRIENDLY</p>
-                            <small>A first of its kind, Members have on-site access to an OSTED rated creche.</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- end highlights-->
@@ -950,20 +691,7 @@
             </div>
             <br>
             <p>
-                Second Home is Europe most innovative and iconic workspace – home to blue-chip corporations like Ernst & Young and Volkswagen,
-                as well as creative businesses including Kickstarter, Artsy and TaskRabbit.
-            </p>
-            <p>
-                Our beautiful spaces provide private studios and flexible workspaces for teams of up to 175 people – all surrounded by curves,
-                natural light and thousands of plants and trees.
-            </p>
-            <p>
-                Second Home's creative community includes every possible industry – from fashion and media to technology and professional
-                services – it's the perfect place for innovation to flourish.
-            </p>
-            <p>
-                Thanks to our world-class facilities, community and support, teams at Second Home grow 10 times faster than the national
-                average.
+                {{$building->about_us}}
             </p>
         </div>
     </div>
@@ -1259,11 +987,6 @@
         </div>
     </div>
     <!-- Featured properties end -->
-
-
-
-
-
 @endsection
 
 @push('scripts')

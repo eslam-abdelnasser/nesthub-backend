@@ -132,14 +132,13 @@
                                                 <p class="sub-ti">{{$building->full_address}}</p>
                                                 <p class="sub-ti">Hackney Central (12 mins walk)</p>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="bot-info">
-                                @php $private = 0; @endphp
-                                @foreach($building->offices as $office)
+                                   @php $private = 0; @endphp
+                                   @foreach($building->offices as $office)
                                         <div class="separator clear-left">
                                             @if($office->office_type == 0 and $private == 0)
                                                 @php $private=1; @endphp

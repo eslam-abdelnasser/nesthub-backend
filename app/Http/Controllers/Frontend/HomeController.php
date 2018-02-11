@@ -21,6 +21,7 @@ class HomeController extends Controller
         $L_buildings = Building::all()->last()->take(4)->get();
 
 
+
         return view('frontPages.index')
             ->with('F_buildings',$F_buildings)
             ->with('P_buildings',$P_buildings)

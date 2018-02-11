@@ -18,10 +18,18 @@ class Building extends Model
         return $this->belongsTo('App\User','user_id');
     }
     public function facilities(){
-        return $this->belongsToMany('App\Models\Facility','building_facility','building_id','facilities_id')->withTimestamps();
+        return $this->belongsToMany(Facility::class);
     }
+
     public function offices()
     {
         return $this->hasMany(Office::class);
+    }
+    public function addtionals()
+    {
+        return $this->hasOne(Additional::class);
+    }
+    public function images(){
+        return $this->hasMany(Images::class);
     }
 }
