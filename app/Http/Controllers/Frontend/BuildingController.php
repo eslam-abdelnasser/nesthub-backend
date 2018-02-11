@@ -20,7 +20,7 @@ class BuildingController extends Controller
     {
         // TODO user validation
         $buildings =Building::where('user_id','=',Auth::user()->id)->get();
-        return view('user/my_property')->withBuildings($buildings);
+        return view('user/my_property')->withBuildings( );
     }
 
     public function createBuildig()
