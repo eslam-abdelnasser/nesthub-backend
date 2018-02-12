@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Image ;
 class UserController extends Controller
 {
@@ -70,25 +71,53 @@ class UserController extends Controller
    }
    public function change_password(Request $request){
 
-       $password=User::where('id',Auth::user()->id);
-        if($request->input('current-password')==$password)
-        {
-            $update = User::where('id', Auth::user()->id)
-                ->update([
-                    'password' => $request->input('new-password'),
-                ]);
-            if ($update) {
-                return json_encode(['success'=>'updated sucessfully']);
-            }
-            else{
-                return "sara";
-            }
-        }
-        else
-        {
-            return json_encode(['error'=>'Your Current Password Incorrect ']);
-        }
+//       $password=User::where('id',Auth::user()->id);
+//        if($request->input('current-password')==$password)
+//        {
+//            $update = User::where('id', Auth::user()->id)
+//                ->update([
+//                    'password' => $request->input('new-password'),
+//                ]);
+//            if ($update) {
+//                return json_encode(['success'=>'updated sucessfully']);
+//            }
+//            else{
+//                return "sara";
+//            }
+//        }
+//        else
+//        {
+//            return json_encode(['error'=>'Your Current Password Incorrect ']);
+//        }
+       if(!(Hash::check($request->get('current-password'),Auth::user()->password))){
+           // The passwords matches
+           return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
 
+       }
+       if(strcmp($request->get('current-password'),$request->get('new-password')) == 0){
+           //current pssword is the same of new
+           return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+
+       }
+       $validatedData=$request->validate([
+           'current-password' => 'required',
+           'new-password' =>  'required|min:6|alpha_num'
+       ]);
+
+//       $user= User::find(Auth::user()->id);
+       $update = User::where('id', Auth::user()->id)
+                ->update([
+                    'password' => bcrypt($request->input('new-password')),
+                ]);
+       if ($update) {
+//                return "updated sucessfully";
+                 return redirect()->back()->with("success","Password changed successfully");
+            }
+
+       else
+        {
+            return redirect()->back()->with("error","Failed  changed successfully");
+        }
    }
 
 

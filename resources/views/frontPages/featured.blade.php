@@ -38,6 +38,7 @@
                             </div>
                             <hr>
                                 <div class="bot-info">
+
                                 @php $fixed = 0;$private = 0; @endphp
                                 @foreach($building->offices as $office)
                                         <div class="separator clear-left">
@@ -50,7 +51,9 @@
                                                 </div>
                                             @endif
                                             @if($office->office_type == 0 and $private == 0)
-                                                    @php $private = 1; @endphp
+
+                                                    @php $private = 1 ;@endphp
+
                                                 <div class="col-md-4 col-xs-4 ">
                                                     <p class="office off-color">Private Office</p>
                                                     <p class="office auto-margin off-color">{{$office->price}}&nbsp;</p>

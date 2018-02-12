@@ -79,17 +79,11 @@ ul{
   background: url('../images/background.jpg') center center no-repeat ;
   background-size: cover;
 }
-.navbar
-{
-border-bottom: 1px solid #eee;
-background:#fff ;
-width: 100%;
-padding-right:9%;
-}
-.navbar-header
-{
-	padding-left:9%;
-}
+
+/*.navbar-header*/
+/*{*/
+	/*padding-left:9%;*/
+/*}*/
 .w3-button .hidden-md
 {
 
@@ -122,11 +116,7 @@ color: #FFBB01 !important;
 	color: #FFBB01 !important;
 }
 
-.content
-{
-	margin-top: 20px;
-	    padding-bottom: 70px;
-}
+
 .custom-right{
     float: right;
 }
@@ -926,6 +916,29 @@ padding-top: 0px;
     margin-bottom: 15px;
 }
     }
-       
 
-          
+
+
+
+
+.building-test {
+	height: 88px;
+	/* padding-top: 34px; */
+	background-color: #203040;
+}
+
+
+.container.owl-carousel.owl-theme.owl-loaded.owl-drag {
+	padding-top: 29px;
+}
+
+.owl-nav {
+	position: absolute;
+	top: 0;
+}
+.owl-prev, .owl-next
+{
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+}
