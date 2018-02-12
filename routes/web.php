@@ -21,7 +21,11 @@ use App\Notifications\NewBuilding;
 Auth::routes();
 Route::get('/','Frontend\HomeController@index')->name('home');
 Route::get('/test','Frontend\BuildingDescriptionController@index');
+<<<<<<< HEAD
 
+=======
+Route::get('search-workspaces','Frontend\SearchController@index')->name('search-workspace');
+>>>>>>> b8e5e59c0bc194863e34597a2e8f56af39565b55
 //Route::get('/build/{name}','Frontend');
 Route::middleware(['auth'])->group(function () {
 //    Route::get('/','Frontend\BuildingController@index')->name('hola');
