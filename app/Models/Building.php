@@ -17,6 +17,10 @@ class Building extends Model
     {
         return $this->belongsTo('App\User','user_id');
     }
+    public function images()
+    {
+        return $this->hasMany('App\Models\Images','building_id');
+    }
     public function facilities(){
         return $this->belongsToMany(Facility::class,'building_facility','building_id','facilities_id');
     }

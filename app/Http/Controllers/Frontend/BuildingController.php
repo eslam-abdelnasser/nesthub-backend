@@ -133,6 +133,7 @@ class BuildingController extends Controller
             $building_image = new Images() ;
             $building_image->image_url = $image_name ;
             $building_image->building_id = $id ;
+            $building_image->resize(160, 160);
             $building_image->save();
         }
 //        Session::flash('success',' Images Added Successfully');
@@ -158,7 +159,7 @@ class BuildingController extends Controller
 //        ));
 
         $building = Building::find($id);
-        $user = \App\User::find(1);
+        $user = \App\User::find(Auth::user()->id);
         $user->notify(new NewBuilding($user,$building));
 
         $addtional = new Additional() ;
@@ -173,6 +174,7 @@ class BuildingController extends Controller
 //        Session::flash('success',' Now Your Building is Live');
 
 //        dd("success");
+
         return redirect()->route('my-property');
 
     }
