@@ -38,61 +38,61 @@
                 <!--office_prefrence button-->
                 <div class=" col-md-3 col-sm-12 col-xs-12 office_prefrence">
                     <div class = "btn-group">
-                        <button type = "button" class = "btn  btn-primary dropdown-toggle" data-toggle = "dropdown">Any Office Type and Size
+                        <button type = "button"  data-target="show_modal" id="office_type_size" class = "btn  btn-primary">Any Office Type and Size
                             <span class = "caret"></span>
                         </button>
-                        <ul class = "dropdown-menu" role = "menu">
-                            <h2>Select Your Office Preferences </h2>
-                            <div class="first">
-                                <div class="col-md-6">
-                                    <span class="nest_head">NO. OF PEOPLE : </span>
-                                    <input type="number" id="desks">
-                                    <li><a href = "#">Show range of desks</a></li>
-                                </div>
+                        {{--<ul class = "dropdown-menu" role = "menu">--}}
+                            {{--<h2>Select Your Office Preferences </h2>--}}
+                            {{--<div class="first">--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<span class="nest_head">NO. OF PEOPLE : </span>--}}
+                                    {{--<input type="number" id="desks">--}}
+                                    {{--<li><a href = "#">Show range of desks</a></li>--}}
+                                {{--</div>--}}
 
-                                <div class="col-md-6">
-                                    <span class="nest_head">OFFICE TYPE : </span>
-                                    <br>
-                                    <br>
-                                    <form >
-                                        <div class="form-check" >
-                                            <label>
-                                                <input type="checkbox" name="check" checked> <span class="label-text"> Hot Desk <p class="sub-heading">
-                                                      Access to a range of desks </p></span>
-                                            </label>
-                                            <br>
-                                            <label>
-                                                <input type="checkbox" name="check" checked> <span class="label-text"> Fixed Desk <p class="sub-heading">
-                                                      Your own dedicated desk</p></span>
-                                            </label>
-                                            <br>
-                                            <label>
-                                                <input type="checkbox" name="check" checked> <span class="label-text"> Private Offic<p class="sub-heading">
-                                                        An office just for your team</p></span>
-                                            </label>
-                                        </div>
-                                    </form>
-                                </div>
+                                {{--<div class="col-md-6">--}}
+                                    {{--<span class="nest_head">OFFICE TYPE : </span>--}}
+                                    {{--<br>--}}
+                                    {{--<br>--}}
+                                    {{--<form >--}}
+                                        {{--<div class="form-check" >--}}
+                                            {{--<label>--}}
+                                                {{--<input type="checkbox" name="check" checked> <span class="label-text"> Hot Desk <p class="sub-heading">--}}
+                                                      {{--Access to a range of desks </p></span>--}}
+                                            {{--</label>--}}
+                                            {{--<br>--}}
+                                            {{--<label>--}}
+                                                {{--<input type="checkbox" name="check" checked> <span class="label-text"> Fixed Desk <p class="sub-heading">--}}
+                                                      {{--Your own dedicated desk</p></span>--}}
+                                            {{--</label>--}}
+                                            {{--<br>--}}
+                                            {{--<label>--}}
+                                                {{--<input type="checkbox" name="check" checked> <span class="label-text"> Private Offic<p class="sub-heading">--}}
+                                                        {{--An office just for your team</p></span>--}}
+                                            {{--</label>--}}
+                                        {{--</div>--}}
+                                    {{--</form>--}}
+                                {{--</div>--}}
 
-                            </div>
+                            {{--</div>--}}
 
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <a href = "#" class="office_footer1" >Cancel</a>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <a href = "#" class="office_footer2"  >Apply</a>
-                                </div>
-                            </div>
+                            {{--<div class="row">--}}
+                                {{--<div class="col-md-6 col-sm-6 col-xs-6">--}}
+                                    {{--<a href = "#" class="office_footer1" >Cancel</a>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-6 col-sm-6 col-xs-6">--}}
+                                    {{--<a href = "#" class="office_footer2"  >Apply</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
 
-                        </ul>
+                        {{--</ul>--}}
                     </div>
                 </div>
                 <!--office_price button-->
                 <div class=" col-md-3 col-sm-12 col-xs-12 price">
                     <div class = "btn-group">
-                        <button type = "button" class = "btn  btn-primary dropdown-toggle" data-toggle = "dropdown"> Any Price
+                        <button type = "button" data-target  id="price" class = "btn  btn-primary dropdown-toggle" data-toggle = "dropdown"> Any Price
                             <span class = "caret"></span>
                         </button>
                         <ul class = "dropdown-menu" role = "menu" >
@@ -526,10 +526,51 @@
     </div>
     <!-- Map content end -->
 
-    <div class="clearfix"></div>
-    <div class="space"></div>
+    {{--<div class="clearfix"></div>--}}
 
 
+    <div data-target="#office_type_size"  class="hidden">
+        <h2>Select Your Office Preferences </h2>
+        <div class="first">
+            <div class="col-md-6">
+                <span class="nest_head">NO. OF PEOPLE : </span>
+                <input type="number" id="desks">
+                <li><a href = "#">Show range of desks</a></li>
+            </div>
+
+            <div class="col-md-6">
+                <span class="nest_head">OFFICE TYPE : </span>
+                <form >
+                    <div class="form-check" >
+                        <label>
+                            <input type="checkbox" name="check" checked> <span class="label-text"> Hot Desk <p class="sub-heading">
+            Access to a range of desks </p></span>
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="check" checked> <span class="label-text"> Fixed Desk <p class="sub-heading">
+            Your own dedicated desk</p></span>
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="check" checked> <span class="label-text"> Private Offic<p class="sub-heading">
+            An office just for your team</p></span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <a href = "#" class="office_footer1" >Cancel</a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <a href = "#" class="office_footer2"  >Apply</a>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -543,5 +584,13 @@
         var longitude = -0.095678;
         var providerName = 'Hydda.Full';
         generateMap(latitude, longitude, providerName);
+    </script>
+
+    <script type="text/javascript">
+        $( document ).ready(function () {
+            $('[data-target]').click(function () {
+                $('[data-target="#'+$(this).attr('id')+'"]').toggleClass('hidden') ;
+            });
+        });
     </script>
 @endpush
