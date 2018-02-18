@@ -2,7 +2,7 @@
 <!-- My Propertiess start -->
 <div class="content-area my-profile">
     <div id="app">
-        @include('flash-message')
+        {{--@include('flash-message')--}}
     </div>
     <div class="container">
         <div class="row">

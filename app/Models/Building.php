@@ -33,7 +33,7 @@ class Building extends Model
     {
         return $this->hasOne(Additional::class);
     }
-    public function images(){
-        return $this->hasMany(Images::class);
-    }
+//    public function images(){
+//        return $this->hasMany(Images::class);
+//    }
 }
