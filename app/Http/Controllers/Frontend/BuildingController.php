@@ -20,13 +20,12 @@ class BuildingController extends Controller
     {
         // TODO user validation
         $buildings =Building::where('user_id','=',Auth::user()->id)->get();
-        return view('user/my_property')->withBuildings( );
+        return view('user/my_property')->withBuildings($buildings);
     }
 
     public function createBuildig()
     {
         $facilities = Facility::all();
-//        dd($facilities);
         return view('create-building')->withFacilities($facilities);
     }
 
@@ -44,8 +43,6 @@ class BuildingController extends Controller
             'postcode'=>'required',
             'facilities'=>'required'
         ));
-
-
         $building = new Building();
         $building->name = $request->name ;
         $building->user_id = Auth::user()->id;
@@ -161,7 +158,6 @@ class BuildingController extends Controller
         $building = Building::find($id);
         $user = \App\User::find(Auth::user()->id);
         $user->notify(new NewBuilding($user,$building));
-
         $addtional = new Additional() ;
         $addtional->additional = json_encode([
             'highlight' =>$request->highlight,
